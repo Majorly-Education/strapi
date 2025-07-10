@@ -39,26 +39,8 @@
       "target": "api::author.author",
       "inversedBy": "articles"
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "articles"
-    },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "shared.media",
-        "shared.quote",
-        "shared.rich-text",
-        "shared.slider"
-      ]
-    },
-    "test": {
-      "type": "richtext"
-    },
-    "test_2": {
-      "type": "blocks"
+    "Main_text": {
+      "type": "text"
     }
   }
 }

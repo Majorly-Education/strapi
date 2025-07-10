@@ -12,6 +12,7 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "@ntegral/strapi-provider-upload-azure-storage-blob": "^2.0.8",
     "@strapi/plugin-cloud": "5.15.0",
     "@strapi/plugin-users-permissions": "5.15.0",
     "@strapi/strapi": "^5.17.0",
@@ -26,6 +27,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-provider-upload-azure-storage": "^3.5.0",
     "styled-components": "^6.0.0",
     "typescript": "^5.8.3"
   },
