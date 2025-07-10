@@ -1,26 +1,31 @@
-module.exports = ({ env }) => ({
-  connection: {
-    client: 'postgres',
+const path = require('path');
+
+module.exports = ({ env }) => {
+  const client = env('DATABASE_CLIENT', 'postgres');
+
+  const connections = {
+    postgres: {
+      connection: {
+        // connectionString: env('DATABASE_URL'),
+        host: env('DATABASE_HOST', '10.0.3.5'),
+        port: env.int('DATABASE_PORT', 5432),
+        database: env('DATABASE_NAME', 'majorly'),
+        user: env('DATABASE_USERNAME', 'majorly'),
+        password: env('DATABASE_PASSWORD', 'strapi'),
+        ssl: {
+            rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false),
+          },
+        schema: env('DATABASE_SCHEMA', 'content'),
+      },
+      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
+    }
+  };
+
+  return {
     connection: {
-      host: env('DATABASE_HOST', '127.0.0.1'),
-      port: env.int('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', 'strapi'),
-      user: env('DATABASE_USERNAME', 'strapi'),
-      password: env('DATABASE_PASSWORD', 'strapi'),
-      schema: env('DATABASE_SCHEMA', 'public'), // Not required
-      ssl: env('DATABASE_SSL', false)
+      client,
+      ...connections[client],
+      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
     },
-    acquireConnectionTimeout: 1000000,
-    pool: {
-      min: 0,
-      max: 4,
-      acquireTimeoutMillis: 300000,
-      createTimeoutMillis: 300000,
-      destroyTimeoutMillis: 300000,
-      idleTimeoutMillis: 30000,
-      reapIntervalMillis:1000,
-      createRetryIntervalMillis: 2000
-    },
-    debug: false,
-  },
-});
+  };
+};
