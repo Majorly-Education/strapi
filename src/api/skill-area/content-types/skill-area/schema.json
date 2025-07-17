@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skill_areas",
+  "info": {
+    "singularName": "skill-area",
+    "pluralName": "skill-areas",
+    "displayName": "Skill Area"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "skill_area_id": {
+      "type": "uid"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    }
+  }
+}
