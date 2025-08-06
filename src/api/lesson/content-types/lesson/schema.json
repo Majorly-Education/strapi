@@ -29,6 +29,13 @@
     },
     "text": {
       "type": "richtext"
+    },
+    "video": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "videos"
+      ]
     }
   }
 }
