@@ -1,13 +1,12 @@
 {
-  "collectionName": "components_shared_rich_texts",
+  "collectionName": "components_content_rich_texts",
   "info": {
-    "displayName": "Rich text",
-    "icon": "align-justify",
-    "description": ""
+    "displayName": "Rich Text",
+    "description": "Generic rich text content using CKEditor"
   },
   "options": {},
   "attributes": {
-    "body": {
+    "content": {
       "type": "customField",
       "customField": "plugin::ckeditor5.CKEditor",
       "options": {

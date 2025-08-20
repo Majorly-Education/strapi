@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_lesson_author_headers",
+  "info": {
+    "displayName": "Author Header",
+    "description": "Lesson author header with template information"
+  },
+  "options": {},
+  "attributes": {
+    "author": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::author.author"
+    },
+    "templateType": {
+      "type": "enumeration",
+      "enum": ["Horizontal Banner"],
+      "default": "Horizontal Banner",
+      "required": true
+    }
+  }
+}

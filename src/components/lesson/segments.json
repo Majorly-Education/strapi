@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_lesson_segments",
+  "info": {
+    "displayName": "Segments",
+    "description": "Complex segment layouts like user personas"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "templateType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Purple Card",
+      "enum": [
+        "Purple Card"
+      ]
+    },
+    "content": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "required": true
+    }
+  }
+}

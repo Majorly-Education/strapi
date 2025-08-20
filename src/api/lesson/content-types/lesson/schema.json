@@ -4,38 +4,59 @@
   "info": {
     "singularName": "lesson",
     "pluralName": "lessons",
-    "displayName": "Lesson"
+    "displayName": "Lesson",
+    "description": "Lesson content with dynamic sections"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "lesson_id": {
-      "type": "uid"
-    },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "duration": {
+      "type": "integer",
+      "default": 15
+    },
+    "difficulty": {
+      "type": "enumeration",
+      "enum": ["Beginner", "Intermediate", "Advanced"],
+      "default": "Beginner"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "content.rich-text",
+        "content.image",
+        "content.video",
+        "content.gallery",
+        "lesson.cta",
+        "lesson.author-header",
+        "lesson.segments"
       ]
     },
-    "text": {
-      "type": "richtext"
+    "module": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::module.module",
+      "inversedBy": "lessons"
     },
-    "video": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "videos"
-      ]
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "tags": {
+      "type": "json"
     }
   }
 }

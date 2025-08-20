@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_content_ctas",
+  "info": {
+    "displayName": "CTA",
+    "description": "Call-to-action component with up to 2 buttons"
+  },
+  "options": {},
+  "attributes": {
+    "primaryButtonText": {
+      "type": "string",
+      "required": true
+    },
+    "primaryButtonStyle": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "outline"
+      ],
+      "default": "primary",
+      "required": true
+    },
+    "primaryButtonAction": {
+      "type": "enumeration",
+      "enum": [
+        "START_LESSON",
+        "GIVE_FEEDBACK"
+      ],
+      "required": true
+    },
+    "secondaryButtonText": {
+      "type": "string",
+      "required": false
+    },
+    "secondaryButtonStyle": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "outline"
+      ],
+      "default": "secondary",
+      "required": false
+    },
+    "secondaryButtonAction": {
+      "type": "enumeration",
+      "enum": [
+        "START_LESSON",
+        "GIVE_FEEDBACK"
+      ],
+      "required": false
+    }
+  }
+}
