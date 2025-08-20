@@ -14,17 +14,22 @@
     "module_id": {
       "type": "uid"
     },
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
     "lessons": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::lesson.lesson",
       "mappedBy": "module"
-    },
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
     }
   }
 }
