@@ -1,0 +1,103 @@
+{
+  "collectionName": "components_lesson_lesson_template_1s",
+  "info": {
+    "displayName": "Lesson Template 1 - Segmentation Style",
+    "description": "Complete template with all sections for segmentation-style lessons"
+  },
+  "options": {},
+  "attributes": {
+    "introContent": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "default": "<p>By the end of this module, learners will be able to:</p>",
+      "description": "Introduction text before learning objectives"
+    },
+    "learningObjective1": {
+      "type": "string",
+      "default": "Explain the importance of aligning business goals with audience segmentation"
+    },
+    "learningObjective2": {
+      "type": "string", 
+      "default": "Differentiate demographic, psychographic, and persona-based segmentation"
+    },
+    "learningObjective3": {
+      "type": "string",
+      "default": "Develop survey questions to derive actionable insights"
+    },
+    "learningObjective4": {
+      "type": "string",
+      "default": "Prioritize insights using editorial and strategic lenses"
+    },
+    "section1Title": {
+      "type": "string",
+      "default": "Starting with business goals",
+      "required": true
+    },
+    "section1Content": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "default": "<p>Every successful campaign begins by aligning with a clear business or brand goal.</p><p>For example, in product marketing, your company goal might be to increase user engagement with a specific feature, or boost conversions for a particular product line.</p><p>Your segmentation strategy should directly support these objectives by identifying the most relevant audiences and understanding their unique needs and behaviors.</p>"
+    },
+    "section2Title": {
+      "type": "string",
+      "default": "Why it matters",
+      "required": true
+    },
+    "section2Content": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor", 
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "default": "<p>Effective segmentation is the foundation of personalized marketing that resonates with your audience.</p><p>Without proper segmentation, you're essentially broadcasting the same message to everyone, which often results in lower engagement rates and missed opportunities.</p>"
+    },
+    "section3Title": {
+      "type": "string",
+      "default": "How segmentation connects to your work",
+      "required": true
+    },
+    "segment1Title": {
+      "type": "string",
+      "default": "Segment 1: \"Comfort-Driven Loyalists\""
+    },
+    "segment1Content": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "default": "<p><strong>Definition:</strong></p><p>Users who primarily listen to familiar music, seeking emotional connection, stability, and comfort, often using Spotify during routine activities.</p><p><strong>Behavioral Markers:</strong></p><ul><li>70%+ of listening time spent on previously saved playlists and \"liked\" songs</li><li>Low Discover Weekly and Release Radar engagement (&lt;1 play per week)</li><li>High repeat listening on the same albums or artist playlists</li><li>Listening concentrated during daily routines: morning prep, commutes, chores</li></ul><p><strong>Psychographics:</strong></p><ul><li>Value consistency, nostalgia, and music as a background companion</li><li>Less risk-taking in music discovery due to cognitive load or emotional preference</li><li>Music as a \"safe zone\" rather than an exploration tool</li></ul><p><strong>Needs:</strong></p><ul><li>Easy access to \"feel-good\" familiar tracks</li><li>Low-friction re-engagement with old favorites</li><li>Occasional gentle nudges to rediscover forgotten favorites</li></ul>"
+    },
+    "segment2Title": {
+      "type": "string",
+      "default": "Segment 2: \"Curious Audio Explorers\""
+    },
+    "segment2Content": {
+      "type": "customField", 
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "default": "<p><strong>Definition:</strong></p><p>Users who primarily listen to familiar music, seeking emotional connection, stability, and comfort, often using Spotify during routine activities.</p><p><strong>Behavioral Markers:</strong></p><ul><li>70%+ of listening time spent on previously saved playlists and \"liked\" songs</li><li>Low Discover Weekly and Release Radar engagement (&lt;1 play per week)</li><li>High repeat listening on the same albums or artist playlists</li><li>Listening concentrated during daily routines: morning prep, commutes, chores</li></ul><p><strong>Psychographics:</strong></p><ul><li>Value consistency, nostalgia, and music as a background companion</li><li>Less risk-taking in music discovery due to cognitive load or emotional preference</li><li>Music as a \"safe zone\" rather than an exploration tool</li></ul><p><strong>Needs:</strong></p><ul><li>Easy access to \"feel-good\" familiar tracks</li><li>Low-friction re-engagement with old favorites</li><li>Occasional gentle nudges to rediscover forgotten favorites</li></ul>"
+    },
+    "noteText": {
+      "type": "text",
+      "default": "This step will probably take 30+ minutes for you to complete since you are creating a full resume and incorporating AI-driven feedback, so make sure to leave yourself time, or be willing to finish it in chunks.",
+      "description": "Sample note text"
+    },
+    "ctaButtonText": {
+      "type": "string",
+      "default": "Take the lesson"
+    },
+    "feedbackLinkText": {
+      "type": "string", 
+      "default": "Feedback"
+    }
+  }
+}

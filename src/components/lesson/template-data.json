@@ -1,0 +1,9 @@
+{
+  "collectionName": "components_lesson_template_data",
+  "info": {
+    "displayName": "Template Data",
+    "description": "Data structure for template-based lessons"
+  },
+  "options": {},
+  "attributes": {}
+}

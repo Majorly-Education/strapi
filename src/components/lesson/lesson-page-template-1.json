@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_lesson_lesson_page_template_1s",
+  "info": {
+    "displayName": "Lesson Page Template 1"
+  },
+  "options": {},
+  "attributes": {
+    "author": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::author.author"
+    },
+    "shortDescription": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "required": true
+    },
+    "sections": {
+      "type": "component",
+      "component": "lesson.rich-text-section",
+      "repeatable": true,
+      "required": true,
+      "min": 1
+    },
+    "segments": {
+      "type": "component",
+      "component": "lesson.segments",
+      "repeatable": true
+    },
+    "note": {
+      "type": "component",
+      "component": "lesson.note",
+      "repeatable": false,
+      "required": false
+    }
+  },
+  "config": {}
+}

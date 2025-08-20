@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_lesson_intros",
+  "info": {
+    "displayName": "Intro",
+    "description": "Lesson introduction template selector - uses lesson title, description, and module info"
+  },
+  "options": {},
+  "attributes": {
+    "template": {
+      "type": "enumeration",
+      "enum": [
+        "objectives-list",
+        "goals-grid", 
+        "skills-breakdown",
+        "outcomes-focus"
+      ],
+      "default": "objectives-list",
+      "required": true,
+      "description": "Visual template for displaying the intro content"
+    },
+    "showModuleInfo": {
+      "type": "boolean",
+      "default": true,
+      "required": true,
+      "description": "Whether to display the module context information"
+    },
+    "introPrefix": {
+      "type": "string",
+      "default": "By the end of this module, learners will be able to:",
+      "required": false,
+      "description": "Custom prefix text before learning objectives (uses lesson description)"
+    }
+  }
+}

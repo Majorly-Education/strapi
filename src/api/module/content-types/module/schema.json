@@ -17,7 +17,8 @@
     "lessons": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::lesson.lesson"
+      "target": "api::lesson.lesson",
+      "mappedBy": "module"
     },
     "title": {
       "type": "string"

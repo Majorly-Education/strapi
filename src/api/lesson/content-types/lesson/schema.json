@@ -5,7 +5,7 @@
     "singularName": "lesson",
     "pluralName": "lessons",
     "displayName": "Lesson",
-    "description": "Lesson content with dynamic sections"
+    "description": "Template-based lesson with predefined structures"
   },
   "options": {
     "draftAndPublish": true
@@ -21,28 +21,17 @@
       "targetField": "title",
       "required": true
     },
-    "description": {
-      "type": "text"
-    },
     "duration": {
       "type": "integer",
       "default": 15
     },
     "difficulty": {
       "type": "enumeration",
-      "enum": ["Beginner", "Intermediate", "Advanced"],
-      "default": "Beginner"
-    },
-    "content": {
-      "type": "dynamiczone",
-      "components": [
-        "content.rich-text",
-        "content.image",
-        "content.video",
-        "content.gallery",
-        "lesson.cta",
-        "lesson.author-header",
-        "lesson.segments"
+      "default": "Beginner",
+      "enum": [
+        "Beginner",
+        "Intermediate",
+        "Advanced"
       ]
     },
     "module": {
@@ -57,6 +46,20 @@
     },
     "tags": {
       "type": "json"
+    },
+    "content": {
+      "type": "component",
+      "component": "lesson.lesson-page-template-1",
+      "repeatable": false,
+      "required": true
+    },
+    "media": {
+      "type": "dynamiczone",
+      "components": [
+        "content.video",
+        "content.image",
+        "content.gallery"
+      ]
     }
   }
 }

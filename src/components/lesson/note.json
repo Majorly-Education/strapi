@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_lesson_notes",
+  "info": {
+    "displayName": "Note"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Simple Note:",
+      "required": true
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

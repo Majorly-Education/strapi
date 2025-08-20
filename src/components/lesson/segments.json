@@ -11,18 +11,9 @@
       "required": true
     },
     "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
-    "templateType": {
-      "type": "enumeration",
-      "required": true,
-      "default": "Purple Card",
-      "enum": [
-        "Purple Card"
-      ]
+      "type": "component",
+      "component": "content.image",
+      "repeatable": false
     },
     "content": {
       "type": "customField",

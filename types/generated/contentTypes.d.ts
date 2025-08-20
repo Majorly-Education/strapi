@@ -566,7 +566,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
   collectionName: 'lessons';
   info: {
-    description: 'Lesson content with dynamic sections';
+    description: 'Template-based lesson with predefined structures';
     displayName: 'Lesson';
     pluralName: 'lessons';
     singularName: 'lesson';
@@ -575,21 +575,14 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<
-      [
-        'content.rich-text',
-        'content.image',
-        'content.video',
-        'content.gallery',
-        'lesson.cta',
-        'lesson.author-header',
-        'lesson.segments',
-      ]
-    >;
+    content: Schema.Attribute.Component<
+      'lesson.lesson-page-template-1',
+      false
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     difficulty: Schema.Attribute.Enumeration<
       ['Beginner', 'Intermediate', 'Advanced']
     > &
@@ -601,6 +594,9 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
       'api::lesson.lesson'
     > &
       Schema.Attribute.Private;
+    media: Schema.Attribute.DynamicZone<
+      ['content.video', 'content.image', 'content.gallery']
+    >;
     module: Schema.Attribute.Relation<'manyToOne', 'api::module.module'>;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
