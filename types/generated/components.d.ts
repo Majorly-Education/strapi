@@ -331,6 +331,10 @@ export interface QuizAnswerOption extends Struct.ComponentSchema {
 
 export interface SharedBlankField extends Struct.ComponentSchema {
   collectionName: 'components_shared_blank_fields';
+  info: {
+    description: 'Blank placeholder (optionally with dropdown options) for fill-in-the-blank questions';
+    displayName: 'Blank Field';
+  };
   attributes: {
     blankId: Schema.Attribute.String;
     dropdownOptions: Schema.Attribute.Component<'shared.option', true>;
@@ -339,11 +343,15 @@ export interface SharedBlankField extends Struct.ComponentSchema {
 
 export interface SharedDraggableItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_draggable_items';
+  info: {
+    description: 'Item that can be dragged into drop zones or reordered';
+    displayName: 'Draggable Item';
+  };
   attributes: {
     category: Schema.Attribute.String;
     correctPosition: Schema.Attribute.Integer;
     description: Schema.Attribute.Text;
-    icon: Schema.Attribute.Media;
+    icon: Schema.Attribute.Media<'images'>;
     isCorrectChoice: Schema.Attribute.Boolean;
     title: Schema.Attribute.String;
   };
