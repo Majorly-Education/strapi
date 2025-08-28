@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_shared_blank_fields", 
+  "attributes": {
+  "blankId": { "type": "string" },
+  "dropdownOptions": {
+      "type": "component",
+      "component": "shared.option",
+      "repeatable": true
+    }
+  }
+}

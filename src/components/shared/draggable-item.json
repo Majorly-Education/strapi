@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_shared_draggable_items",
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "icon": { "type": "media" },
+  "isCorrectChoice": { "type": "boolean" },
+  "correctPosition": { "type": "integer" },
+    "category": { "type": "string" }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_questions_fill_blanks_contents",
+  "info": {
+    "displayName": "Fill in Blanks Content"  
+  },
+  "attributes": {
+  "sentenceTemplate": {
+      "type": "text",
+      "description": "Text with {{blank1}}, {{blank2}} placeholders"
+    },
+    "blanks": {
+      "type": "component",
+      "component": "shared.blank-field",
+      "repeatable": true
+    }
+  }
+}

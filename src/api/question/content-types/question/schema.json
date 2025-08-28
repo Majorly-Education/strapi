@@ -1,24 +1,22 @@
 {
   "kind": "collectionType",
   "collectionName": "questions",
-  "info": {
-    "singularName": "question",
-    "pluralName": "questions",
-    "displayName": "Question"
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
   "attributes": {
-    "questionText": {
+    "question_text": {
       "type": "text",
       "required": true
     },
-    "questionType": {
+    "question_type": {
       "type": "enumeration",
-      "enum": ["multipleChoice", "singleChoice", "trueFalse"],
-      "default": "multipleChoice"
+      "enum": [
+        "multiple_choice",
+        "true_false", 
+        "drag_drop_ranking",
+        "drag_drop_categorize",
+        "multi_select",
+        "fill_in_blanks"
+      ],
+      "required": true
     },
     "quiz": {
       "type": "relation",
@@ -30,10 +28,28 @@
       "type": "integer",
       "default": 0
     },
-    "answerOptions": {
-      "type": "component",
-      "component": "quiz.answer-option",
-      "repeatable": true
+    "points": {
+      "type": "integer",
+      "default": 1
+    },
+    "instruction": {
+      "type": "string",
+      "description": "e.g., 'Drag and drop top 3', 'Select 4 best answers'"
+    },
+    
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "questions.multiple-choice-content",
+        "questions.true-false-content",
+        "questions.drag-drop-content", 
+        "questions.multi-select-content",
+        "questions.fill-blanks-content"
+      ]
+    },
+    
+    "explanation": {
+      "type": "text"
     }
   }
 }

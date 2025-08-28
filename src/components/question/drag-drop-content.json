@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_questions_drag_drop_contents",
+  "info": {
+    "displayName": "Drag Drop Content"
+  },
+  "attributes": {
+  "sourceItems": {
+      "type": "component",
+      "component": "shared.draggable-item",
+      "repeatable": true
+    },
+  "targetZones": {
+      "type": "component", 
+      "component": "shared.drop-zone",
+      "repeatable": true
+    },
+  "maxSelections": {
+      "type": "integer",
+      "description": "How many items to select"
+    },
+  "validationType": {
+      "type": "enumeration",
+      "enum": ["exact_order", "correct_items", "categorization"]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_questions_multiple_choice_contents",
+  "info": {
+    "displayName": "Multiple Choice Content"
+  },
+  "attributes": {
+    "options": {
+      "type": "component",
+      "component": "shared.option",
+      "repeatable": true
+    }
+  }
+}
