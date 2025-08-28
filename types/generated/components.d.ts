@@ -251,6 +251,70 @@ export interface LessonSegments extends Struct.ComponentSchema {
   };
 }
 
+export interface QuestionDragDropContent extends Struct.ComponentSchema {
+  collectionName: 'components_questions_drag_drop_contents';
+  info: {
+    displayName: 'Drag Drop Content';
+  };
+  attributes: {
+    maxSelections: Schema.Attribute.Integer;
+    sourceItems: Schema.Attribute.Component<'shared.draggable-item', true>;
+    targetZones: Schema.Attribute.Component<'shared.drop-zone', true>;
+    validationType: Schema.Attribute.Enumeration<
+      ['exact_order', 'correct_items', 'categorization']
+    >;
+  };
+}
+
+export interface QuestionFillBlanksContent extends Struct.ComponentSchema {
+  collectionName: 'components_questions_fill_blanks_contents';
+  info: {
+    displayName: 'Fill in Blanks Content';
+  };
+  attributes: {
+    blanks: Schema.Attribute.Component<'shared.blank-field', true>;
+    sentenceTemplate: Schema.Attribute.Text;
+  };
+}
+
+export interface QuestionMultiSelectContent extends Struct.ComponentSchema {
+  collectionName: 'components_questions_multi_select_contents';
+  info: {
+    displayName: 'Multi Select Content';
+  };
+  attributes: {
+    maxSelections: Schema.Attribute.Integer;
+    minSelections: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    options: Schema.Attribute.Component<'shared.option', true>;
+    selectionType: Schema.Attribute.Enumeration<
+      ['exact_count', 'minimum', 'maximum']
+    > &
+      Schema.Attribute.DefaultTo<'exact_count'>;
+  };
+}
+
+export interface QuestionMultipleChoiceContent extends Struct.ComponentSchema {
+  collectionName: 'components_questions_multiple_choice_contents';
+  info: {
+    displayName: 'Multiple Choice Content';
+  };
+  attributes: {
+    options: Schema.Attribute.Component<'shared.option', true>;
+  };
+}
+
+export interface QuestionTrueFalseContent extends Struct.ComponentSchema {
+  collectionName: 'components_questions_true_false_contents';
+  info: {
+    displayName: 'True False Content';
+  };
+  attributes: {
+    correctAnswer: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    falseExplanation: Schema.Attribute.Text;
+    trueExplanation: Schema.Attribute.Text;
+  };
+}
+
 export interface QuizAnswerOption extends Struct.ComponentSchema {
   collectionName: 'components_quiz_answer_options';
   info: {
@@ -265,6 +329,45 @@ export interface QuizAnswerOption extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedBlankField extends Struct.ComponentSchema {
+  collectionName: 'components_shared_blank_fields';
+  attributes: {
+    blankId: Schema.Attribute.String;
+    dropdownOptions: Schema.Attribute.Component<'shared.option', true>;
+  };
+}
+
+export interface SharedDraggableItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_draggable_items';
+  attributes: {
+    category: Schema.Attribute.String;
+    correctPosition: Schema.Attribute.Integer;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media;
+    isCorrectChoice: Schema.Attribute.Boolean;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedDropZone extends Struct.ComponentSchema {
+  collectionName: 'components_shared_drop_zones';
+  info: {
+    description: 'Target area for drag and drop questions';
+    displayName: 'Drop Zone';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    maxItems: Schema.Attribute.Integer;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    placeholderText: Schema.Attribute.String;
+    zoneId: Schema.Attribute.String & Schema.Attribute.Required;
+    zoneType: Schema.Attribute.Enumeration<
+      ['ranking', 'category', 'solution_box']
+    > &
+      Schema.Attribute.DefaultTo<'solution_box'>;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -272,6 +375,23 @@ export interface SharedMedia extends Struct.ComponentSchema {
     icon: 'file-video';
   };
   attributes: {};
+}
+
+export interface SharedOption extends Struct.ComponentSchema {
+  collectionName: 'components_shared_options';
+  info: {
+    description: 'Reusable option component for various question types';
+    displayName: 'Option';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    explanation: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images'>;
+    isCorrect: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    value: Schema.Attribute.String;
+  };
 }
 
 export interface SharedQuote extends Struct.ComponentSchema {
@@ -359,8 +479,17 @@ declare module '@strapi/strapi' {
       'lesson.note': LessonNote;
       'lesson.rich-text-section': LessonRichTextSection;
       'lesson.segments': LessonSegments;
+      'question.drag-drop-content': QuestionDragDropContent;
+      'question.fill-blanks-content': QuestionFillBlanksContent;
+      'question.multi-select-content': QuestionMultiSelectContent;
+      'question.multiple-choice-content': QuestionMultipleChoiceContent;
+      'question.true-false-content': QuestionTrueFalseContent;
       'quiz.answer-option': QuizAnswerOption;
+      'shared.blank-field': SharedBlankField;
+      'shared.draggable-item': SharedDraggableItem;
+      'shared.drop-zone': SharedDropZone;
       'shared.media': SharedMedia;
+      'shared.option': SharedOption;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;

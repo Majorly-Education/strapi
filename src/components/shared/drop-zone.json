@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_drop_zones",
+  "info": {
+    "displayName": "Drop Zone",
+    "description": "Target area for drag and drop questions"
+  },
+  "attributes": {
+  "zoneId": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "description": "e.g., 'Top 3 Most Important', 'Solution Box'"
+    },
+  "zoneType": {
+      "type": "enumeration",
+      "enum": ["ranking", "category", "solution_box"],
+      "default": "solution_box"
+    },
+  "maxItems": {
+      "type": "integer",
+      "description": "Maximum items this zone accepts"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+  "placeholderText": {
+      "type": "string",
+      "description": "Text shown in empty drop zone"
+    }
+  }
+}

@@ -651,13 +651,23 @@ export interface ApiQuestionQuestion extends Struct.CollectionTypeSchema {
     singularName: 'question';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    answerOptions: Schema.Attribute.Component<'quiz.answer-option', true>;
+    content: Schema.Attribute.DynamicZone<
+      [
+        'question.multiple-choice-content',
+        'question.true-false-content',
+        'question.drag-drop-content',
+        'question.multi-select-content',
+        'question.fill-blanks-content',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    explanation: Schema.Attribute.Text;
+    instruction: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -665,12 +675,20 @@ export interface ApiQuestionQuestion extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    points: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
     publishedAt: Schema.Attribute.DateTime;
     questionText: Schema.Attribute.Text & Schema.Attribute.Required;
     questionType: Schema.Attribute.Enumeration<
-      ['multipleChoice', 'singleChoice', 'trueFalse']
+      [
+        'multipleChoice',
+        'trueFalse',
+        'dragDropRanking',
+        'dragDropCategorize',
+        'multiSelect',
+        'fillInBlanks',
+      ]
     > &
-      Schema.Attribute.DefaultTo<'multipleChoice'>;
+      Schema.Attribute.Required;
     quiz: Schema.Attribute.Relation<'manyToOne', 'api::quiz.quiz'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

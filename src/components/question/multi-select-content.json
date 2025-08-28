@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_questions_multi_select_contents",
+  "info": {
+    "displayName": "Multi Select Content"
+  },
+  "attributes": {
+    "options": {
+      "type": "component",
+      "component": "shared.option",
+      "repeatable": true
+    },
+  "minSelections": {
+      "type": "integer",
+      "default": 1
+    },
+  "maxSelections": {
+      "type": "integer",
+      "description": "Maximum selections allowed"
+    },
+  "selectionType": {
+      "type": "enumeration",
+      "enum": ["exact_count", "minimum", "maximum"],
+      "default": "exact_count"
+    }
+  }
+}

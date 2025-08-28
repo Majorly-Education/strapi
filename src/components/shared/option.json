@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_options",
+  "info": {
+    "displayName": "Option",
+    "description": "Reusable option component for various question types"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+  "isCorrect": {
+      "type": "boolean",
+      "default": false
+    },
+    "explanation": {
+      "type": "text",
+      "description": "Why this option is right/wrong"
+    },
+    "value": {
+      "type": "string",
+      "description": "Internal value for processing"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

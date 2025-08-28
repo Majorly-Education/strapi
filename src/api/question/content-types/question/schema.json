@@ -1,20 +1,25 @@
 {
   "kind": "collectionType",
   "collectionName": "questions",
+  "info": {
+    "singularName": "question",
+    "pluralName": "questions",
+    "displayName": "Question"
+  },
   "attributes": {
-    "question_text": {
+    "questionText": {
       "type": "text",
       "required": true
     },
-    "question_type": {
+    "questionType": {
       "type": "enumeration",
       "enum": [
-        "multiple_choice",
-        "true_false", 
-        "drag_drop_ranking",
-        "drag_drop_categorize",
-        "multi_select",
-        "fill_in_blanks"
+        "multipleChoice",
+        "trueFalse",
+        "dragDropRanking",
+        "dragDropCategorize",
+        "multiSelect",
+        "fillInBlanks"
       ],
       "required": true
     },
@@ -40,11 +45,11 @@
     "content": {
       "type": "dynamiczone",
       "components": [
-        "questions.multiple-choice-content",
-        "questions.true-false-content",
-        "questions.drag-drop-content", 
-        "questions.multi-select-content",
-        "questions.fill-blanks-content"
+        "question.multiple-choice-content",
+        "question.true-false-content",
+        "question.drag-drop-content",
+        "question.multi-select-content",
+        "question.fill-blanks-content"
       ]
     },
     

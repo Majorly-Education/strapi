@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_questions_true_false_contents",
+  "info": {
+    "displayName": "True False Content"
+  },
+  "attributes": {
+  "correctAnswer": {
+      "type": "boolean",
+      "required": true
+    },
+  "trueExplanation": {
+      "type": "text",
+      "description": "Explanation when True is selected"
+    },
+  "falseExplanation": {
+      "type": "text", 
+      "description": "Explanation when False is selected"
+    }
+  }
+}
