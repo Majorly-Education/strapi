@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_quiz_answer_options",
+  "info": {
+    "displayName": "Answer Option"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "isCorrect": {
+      "type": "boolean",
+      "default": false
+    },
+    "icon": {
+      "type": "media",
+      "allowedTypes": ["images"]
+    },
+    "explanation": {
+      "type": "text",
+      "description": "Explanation shown after selection"
+    }
+  }
+}

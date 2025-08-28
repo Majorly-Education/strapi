@@ -251,6 +251,20 @@ export interface LessonSegments extends Struct.ComponentSchema {
   };
 }
 
+export interface QuizAnswerOption extends Struct.ComponentSchema {
+  collectionName: 'components_quiz_answer_options';
+  info: {
+    displayName: 'Answer Option';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    explanation: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images'>;
+    isCorrect: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -345,6 +359,7 @@ declare module '@strapi/strapi' {
       'lesson.note': LessonNote;
       'lesson.rich-text-section': LessonRichTextSection;
       'lesson.segments': LessonSegments;
+      'quiz.answer-option': QuizAnswerOption;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
