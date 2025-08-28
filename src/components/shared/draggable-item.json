@@ -1,11 +1,15 @@
 {
   "collectionName": "components_shared_draggable_items",
+  "info": {
+    "displayName": "Draggable Item",
+    "description": "Item that can be dragged into drop zones or reordered"
+  },
   "attributes": {
     "title": { "type": "string" },
     "description": { "type": "text" },
-    "icon": { "type": "media" },
-  "isCorrectChoice": { "type": "boolean" },
-  "correctPosition": { "type": "integer" },
+    "icon": { "type": "media", "allowedTypes": ["images"], "multiple": false },
+    "isCorrectChoice": { "type": "boolean" },
+    "correctPosition": { "type": "integer" },
     "category": { "type": "string" }
   }
 }

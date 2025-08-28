@@ -1,8 +1,12 @@
 {
-  "collectionName": "components_shared_blank_fields", 
+  "collectionName": "components_shared_blank_fields",
+  "info": {
+    "displayName": "Blank Field",
+    "description": "Blank placeholder (optionally with dropdown options) for fill-in-the-blank questions"
+  },
   "attributes": {
-  "blankId": { "type": "string" },
-  "dropdownOptions": {
+    "blankId": { "type": "string" },
+    "dropdownOptions": {
       "type": "component",
       "component": "shared.option",
       "repeatable": true
