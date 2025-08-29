@@ -14,6 +14,7 @@ module.exports = [
             "blob:",
             "market-assets.strapi.io",
             "majorly-test.s3.ap-south-1.amazonaws.com",
+            "azurequea52d.blob.core.windows.net",
           ],
           "media-src": [
             "'self'",
@@ -21,6 +22,7 @@ module.exports = [
             "blob:",
             "market-assets.strapi.io",
             "majorly-test.s3.ap-south-1.amazonaws.com",
+            "azurequea52d.blob.core.windows.net",
           ],
           upgradeInsecureRequests: null,
         },
