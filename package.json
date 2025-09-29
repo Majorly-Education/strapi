@@ -9,6 +9,7 @@
     "develop": "strapi develop",
     "seed:example": "node ./scripts/seed.js",
     "seed:comprehensive": "node ./scripts/run-comprehensive-seed.js",
+    "seed:cloud": "node ./scripts/seed-via-rest-api.js",
     "start": "strapi start",
     "strapi": "strapi"
   },
@@ -25,6 +26,7 @@
     "fs-extra": "^10.0.0",
     "knex": "^3.1.0",
     "mime-types": "^2.1.27",
+    "node-fetch": "^2.7.0",
     "pg": "^8.16.3",
     "pg-connection-string": "^2.9.1",
     "react": "^18.0.0",
