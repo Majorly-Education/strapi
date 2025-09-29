@@ -9,6 +9,21 @@ const CONFIG = {
   API_TOKEN: process.env.STRAPI_CLOUD_API_TOKEN || 'your-api-token-here',
 };
 
+// CONFIGURATION: Update this array with your uploaded media IDs
+// Upload 2-3 icons in Strapi Media Library and get their IDs
+const ICON_MEDIA_IDS = [
+  // Add your media IDs here, e.g.:
+  // 1, 2, 3
+  // If empty, no icons will be assigned
+];
+
+// Helper function to get a random icon ID from the array
+function getRandomIcon() {
+  if (ICON_MEDIA_IDS.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * ICON_MEDIA_IDS.length);
+  return ICON_MEDIA_IDS[randomIndex];
+}
+
 // Track data (same as local seeding script)
 const TRACK_DATA = {
   "Aspiring Product Marketer": {
@@ -18,7 +33,6 @@ const TRACK_DATA = {
         slug: "strategic-positioning",
         description: "Master the fundamentals of strategic positioning to differentiate your product and create compelling market narratives.",
         xp_value: 140,
-        icon_url: "/icons/positioning.svg",
         lessons: [
           {
             title: "Why Positioning Matters",
@@ -26,7 +40,6 @@ const TRACK_DATA = {
             duration: 25,
             difficulty: "Beginner",
             xp_value: 20,
-            icon_url: "/icons/positioning-matters.svg",
             tags: ["positioning", "fundamentals", "strategy"]
           },
           {
@@ -35,7 +48,6 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Beginner",
             xp_value: 25,
-            icon_url: "/icons/comparison.svg",
             tags: ["positioning", "messaging", "branding"]
           },
           {
@@ -44,7 +56,6 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Beginner",
             xp_value: 30,
-            icon_url: "/icons/frameworks.svg",
             tags: ["frameworks", "positioning", "methodology"]
           },
           {
@@ -53,7 +64,6 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Intermediate",
             xp_value: 35,
-            icon_url: "/icons/elements.svg",
             tags: ["positioning statement", "elements", "structure"]
           },
           {
@@ -62,7 +72,6 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Intermediate",
             xp_value: 40,
-            icon_url: "/icons/writing.svg",
             tags: ["writing", "positioning", "refinement"]
           },
           {
@@ -71,7 +80,6 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Intermediate",
             xp_value: 30,
-            icon_url: "/icons/competitor-analysis.svg",
             tags: ["competitive analysis", "positioning", "research"]
           },
           {
@@ -80,7 +88,6 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Advanced",
             xp_value: 35,
-            icon_url: "/icons/differentiation.svg",
             tags: ["differentiation", "strategy", "competitive advantage"]
           },
           {
@@ -89,7 +96,6 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Advanced",
             xp_value: 30,
-            icon_url: "/icons/new-markets.svg",
             tags: ["new markets", "positioning", "expansion"]
           }
         ]
@@ -98,7 +104,6 @@ const TRACK_DATA = {
         slug: "compelling-messaging",
         description: "Learn to craft clear, resonant messages that communicate value and drive action across different audiences and channels.",
         xp_value: 110,
-        icon_url: "/icons/messaging.svg",
         lessons: [
           {
             title: "What is a Message?",
@@ -106,7 +111,6 @@ const TRACK_DATA = {
             duration: 20,
             difficulty: "Beginner",
             xp_value: 15,
-            icon_url: "/icons/message-basics.svg",
             tags: ["messaging", "fundamentals", "communication"]
           },
           {
@@ -115,7 +119,6 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Beginner",
             xp_value: 25,
-            icon_url: "/icons/messaging-frameworks.svg",
             tags: ["frameworks", "messaging", "structure"]
           },
           {
@@ -124,7 +127,6 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Intermediate",
             xp_value: 30,
-            icon_url: "/icons/value-prop.svg",
             tags: ["value proposition", "benefits", "messaging"]
           },
           {
@@ -133,7 +135,6 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Intermediate",
             xp_value: 35,
-            icon_url: "/icons/clear-messages.svg",
             tags: ["writing", "clarity", "resonance"]
           },
           {
@@ -142,7 +143,6 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Advanced",
             xp_value: 30,
-            icon_url: "/icons/audience-adaptation.svg",
             tags: ["audience", "adaptation", "personalization"]
           }
         ]
@@ -151,7 +151,6 @@ const TRACK_DATA = {
         slug: "go-to-market-strategy",
         description: "Design comprehensive go-to-market strategies that ensure successful product launches and sustainable growth.",
         xp_value: 130,
-        icon_url: "/icons/gtm.svg",
         lessons: [
           {
             title: "What is a GTM Strategy?",
@@ -159,7 +158,6 @@ const TRACK_DATA = {
             duration: 25,
             difficulty: "Beginner",
             xp_value: 20,
-            icon_url: "/icons/gtm-basics.svg",
             tags: ["GTM", "strategy", "fundamentals"]
           },
           {
@@ -168,7 +166,6 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Beginner",
             xp_value: 25,
-            icon_url: "/icons/gtm-comparison.svg",
             tags: ["GTM", "launch", "messaging", "differences"]
           },
           {
@@ -177,7 +174,6 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Intermediate",
             xp_value: 35,
-            icon_url: "/icons/gtm-components.svg",
             tags: ["GTM", "components", "strategy"]
           },
           {
@@ -186,7 +182,6 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Intermediate",
             xp_value: 30,
-            icon_url: "/icons/goals-metrics.svg",
             tags: ["goals", "metrics", "KPIs"]
           },
           {
@@ -195,7 +190,6 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Intermediate",
             xp_value: 25,
-            icon_url: "/icons/target-customers.svg",
             tags: ["target customers", "segmentation", "ICP"]
           },
           {
@@ -204,7 +198,6 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Advanced",
             xp_value: 30,
-            icon_url: "/icons/channel-budget.svg",
             tags: ["channels", "budget", "planning"]
           }
         ]
@@ -218,7 +211,6 @@ const TRACK_DATA = {
         slug: "advanced-strategic-positioning",
         description: "Master sophisticated positioning strategies for complex products, multi-segment markets, and competitive landscapes.",
         xp_value: 160,
-        icon_url: "/icons/advanced-positioning.svg",
         lessons: [
           {
             title: "Enterprise Positioning Strategies",
@@ -226,7 +218,6 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            icon_url: "/icons/enterprise.svg",
             tags: ["enterprise", "positioning", "B2B"]
           },
           {
@@ -235,7 +226,6 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            icon_url: "/icons/portfolio.svg",
             tags: ["portfolio", "positioning", "product suite"]
           },
           {
@@ -244,7 +234,6 @@ const TRACK_DATA = {
             duration: 55,
             difficulty: "Advanced",
             xp_value: 50,
-            icon_url: "/icons/international.svg",
             tags: ["international", "global markets", "localization"]
           },
           {
@@ -253,7 +242,6 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Advanced",
             xp_value: 35,
-            icon_url: "/icons/emerging.svg",
             tags: ["emerging markets", "new categories", "innovation"]
           }
         ]
@@ -262,7 +250,6 @@ const TRACK_DATA = {
         slug: "advanced-messaging-architecture",
         description: "Build comprehensive messaging systems that work across complex organizations, multiple audiences, and varied channels.",
         xp_value: 140,
-        icon_url: "/icons/messaging-architecture.svg",
         lessons: [
           {
             title: "Message Hierarchy and Systems",
@@ -270,7 +257,6 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            icon_url: "/icons/hierarchy.svg",
             tags: ["message hierarchy", "systems", "architecture"]
           },
           {
@@ -279,7 +265,6 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Advanced",
             xp_value: 35,
-            icon_url: "/icons/persona-messaging.svg",
             tags: ["personas", "messaging", "segmentation"]
           },
           {
@@ -288,7 +273,6 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            icon_url: "/icons/channel-adaptation.svg",
             tags: ["channels", "adaptation", "omnichannel"]
           },
           {
@@ -297,7 +281,6 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            icon_url: "/icons/message-testing.svg",
             tags: ["testing", "optimization", "measurement"]
           }
         ]
@@ -306,7 +289,6 @@ const TRACK_DATA = {
         slug: "enterprise-gtm-strategy",
         description: "Design and execute sophisticated go-to-market strategies for enterprise products, including partner ecosystems and complex sales cycles.",
         xp_value: 180,
-        icon_url: "/icons/enterprise-gtm.svg",
         lessons: [
           {
             title: "Enterprise Sales Enablement",
@@ -314,7 +296,6 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            icon_url: "/icons/sales-enablement.svg",
             tags: ["sales enablement", "enterprise", "B2B"]
           },
           {
@@ -323,7 +304,6 @@ const TRACK_DATA = {
             duration: 55,
             difficulty: "Advanced",
             xp_value: 50,
-            icon_url: "/icons/partner-ecosystem.svg",
             tags: ["partners", "ecosystem", "channel strategy"]
           },
           {
@@ -332,7 +312,6 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            icon_url: "/icons/abm.svg",
             tags: ["ABM", "account-based", "enterprise"]
           },
           {
@@ -341,7 +320,6 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            icon_url: "/icons/complex-deals.svg",
             tags: ["complex sales", "deal strategy", "enterprise"]
           },
           {
@@ -350,7 +328,6 @@ const TRACK_DATA = {
             duration: 60,
             difficulty: "Advanced",
             xp_value: 55,
-            icon_url: "/icons/global-launch.svg",
             tags: ["global launch", "orchestration", "scaling"]
           }
         ]
@@ -602,7 +579,7 @@ async function seedViaRestApi() {
             course_id: `course-${courseData.slug}`,
             order: courseOrder,
             xp_value: courseData.xp_value,
-            icon_url: courseData.icon_url,
+            ...(getRandomIcon() && { icon: getRandomIcon() }),
             track: track.documentId,
             publishedAt: new Date().toISOString(),
           },
@@ -627,7 +604,7 @@ async function seedViaRestApi() {
               difficulty: lessonData.difficulty,
               order: lessonOrder,
               xp_value: lessonData.xp_value,
-              icon_url: lessonData.icon_url,
+              ...(getRandomIcon() && { icon: getRandomIcon() }),
               tags: lessonData.tags,
               course: course.documentId,
               content: createLessonContent(lessonData.title, lessonData.tags, defaultAuthor.documentId),

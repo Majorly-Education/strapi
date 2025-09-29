@@ -31,8 +31,13 @@
       "type": "integer",
       "default": 0
     },
-    "icon_url": {
-      "type": "string"
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "track": {
       "type": "relation",

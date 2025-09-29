@@ -24,12 +24,18 @@ This script uses REST API calls to populate your Strapi Cloud instance. Perfect 
 
 ## Cloud Seeding Setup
 
-### Step 1: Get Your Strapi Cloud Details
+### Step 1: Upload Icons to Strapi Media Library
+
+1. **Upload 2-3 icons** to your Strapi Media Library (JPG, PNG, SVG)
+2. **Note the media IDs** from the URLs (e.g., if URL is `/uploads/icon_123.png`, the ID is `123`)
+3. **Update the ICON_MEDIA_IDS array** in both seeding scripts
+
+### Step 2: Get Your Strapi Cloud Details
 
 1. **URL**: Your Strapi Cloud URL (e.g., `https://your-app-name.strapiapp.com`)
 2. **API Token**: Create a full-access API token in your Strapi Cloud admin panel
 
-### Step 2: Configure the Script
+### Step 3: Configure the Script
 
 Option A: **Edit the script directly**
 ```javascript
@@ -38,6 +44,11 @@ const CONFIG = {
   STRAPI_URL: 'https://your-app-name.strapiapp.com',
   API_TOKEN: 'your-full-access-api-token-here',
 };
+
+// Update this with your uploaded media IDs
+const ICON_MEDIA_IDS = [
+  1, 2, 3  // Replace with your actual media IDs
+];
 ```
 
 Option B: **Use environment variables** (recommended)
