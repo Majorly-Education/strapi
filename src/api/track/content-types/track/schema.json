@@ -23,6 +23,12 @@
       "targetField": "title",
       "required": true
     },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course",
+      "mappedBy": "track"
+    },
     "skill_areas": {
       "type": "relation",
       "relation": "oneToMany",

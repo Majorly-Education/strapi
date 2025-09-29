@@ -23,10 +23,36 @@
       "targetField": "title",
       "required": true
     },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "xp_value": {
+      "type": "integer",
+      "default": 0
+    },
+    "icon_url": {
+      "type": "string"
+    },
+    "track": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::track.track",
+      "inversedBy": "courses"
+    },
+    "lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lesson.lesson",
+      "mappedBy": "course"
+    },
     "modules": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::module.module"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
