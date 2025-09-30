@@ -1,12 +1,16 @@
 // REST API seeding script for Strapi Cloud deployment
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 // Configuration - Update these for your Strapi Cloud instance
 const CONFIG = {
   // Update this to your Strapi Cloud URL
-  STRAPI_URL: process.env.STRAPI_CLOUD_URL || 'https://your-app-name.strapiapp.com',
+  STRAPI_URL:
+    process.env.STRAPI_CLOUD_URL ||
+    "https://prized-cuddle-254dd791cc.strapiapp.com",
   // Update this to your Strapi Cloud API token (with full permissions)
-  API_TOKEN: process.env.STRAPI_CLOUD_API_TOKEN || 'your-api-token-here',
+  API_TOKEN:
+    process.env.STRAPI_CLOUD_API_TOKEN ||
+    "fcd1f547bc4ff8deda6c43a1a55038965d0fbc93439bb77719e95ee9628ac196b87abb1c04139a302d9e55fdfb8f283b6f8e4f7f645b56af06b38ff6d9f39dcfcc41ef23a163dcf4703eefeec7ab25bbe7d2fc6cf16913923c90bcaebf0c05ab4365c26fd1dad1a36227a7abd416f7887ce2a92988a1bdc7c0350e01b3337a76",
 };
 
 // CONFIGURATION: Update this array with your uploaded media IDs
@@ -15,6 +19,7 @@ const ICON_MEDIA_IDS = [
   // Add your media IDs here, e.g.:
   // 1, 2, 3
   // If empty, no icons will be assigned
+  15, 14, 13, 12,
 ];
 
 // Helper function to get a random icon ID from the array
@@ -31,7 +36,8 @@ const TRACK_DATA = {
     courses: {
       "Strategic Positioning": {
         slug: "strategic-positioning",
-        description: "Master the fundamentals of strategic positioning to differentiate your product and create compelling market narratives.",
+        description:
+          "Master the fundamentals of strategic positioning to differentiate your product and create compelling market narratives.",
         xp_value: 140,
         lessons: [
           {
@@ -40,7 +46,7 @@ const TRACK_DATA = {
             duration: 25,
             difficulty: "Beginner",
             xp_value: 20,
-            tags: ["positioning", "fundamentals", "strategy"]
+            tags: ["positioning", "fundamentals", "strategy"],
           },
           {
             title: "Positioning vs. Messaging vs. Branding",
@@ -48,7 +54,7 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Beginner",
             xp_value: 25,
-            tags: ["positioning", "messaging", "branding"]
+            tags: ["positioning", "messaging", "branding"],
           },
           {
             title: "Positioning Frameworks Overview",
@@ -56,7 +62,7 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Beginner",
             xp_value: 30,
-            tags: ["frameworks", "positioning", "methodology"]
+            tags: ["frameworks", "positioning", "methodology"],
           },
           {
             title: "Elements of a Strong Positioning Statement",
@@ -64,7 +70,7 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Intermediate",
             xp_value: 35,
-            tags: ["positioning statement", "elements", "structure"]
+            tags: ["positioning statement", "elements", "structure"],
           },
           {
             title: "Writing and Refining Your Positioning Statement",
@@ -72,7 +78,7 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Intermediate",
             xp_value: 40,
-            tags: ["writing", "positioning", "refinement"]
+            tags: ["writing", "positioning", "refinement"],
           },
           {
             title: "Analyzing Competitor Positioning",
@@ -80,7 +86,7 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Intermediate",
             xp_value: 30,
-            tags: ["competitive analysis", "positioning", "research"]
+            tags: ["competitive analysis", "positioning", "research"],
           },
           {
             title: "Differentiation Strategies",
@@ -88,7 +94,7 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Advanced",
             xp_value: 35,
-            tags: ["differentiation", "strategy", "competitive advantage"]
+            tags: ["differentiation", "strategy", "competitive advantage"],
           },
           {
             title: "Positioning for New Markets",
@@ -96,13 +102,14 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Advanced",
             xp_value: 30,
-            tags: ["new markets", "positioning", "expansion"]
-          }
-        ]
+            tags: ["new markets", "positioning", "expansion"],
+          },
+        ],
       },
       "Compelling Messaging": {
         slug: "compelling-messaging",
-        description: "Learn to craft clear, resonant messages that communicate value and drive action across different audiences and channels.",
+        description:
+          "Learn to craft clear, resonant messages that communicate value and drive action across different audiences and channels.",
         xp_value: 110,
         lessons: [
           {
@@ -111,7 +118,7 @@ const TRACK_DATA = {
             duration: 20,
             difficulty: "Beginner",
             xp_value: 15,
-            tags: ["messaging", "fundamentals", "communication"]
+            tags: ["messaging", "fundamentals", "communication"],
           },
           {
             title: "Messaging Frameworks Overview",
@@ -119,7 +126,7 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Beginner",
             xp_value: 25,
-            tags: ["frameworks", "messaging", "structure"]
+            tags: ["frameworks", "messaging", "structure"],
           },
           {
             title: "Defining Your Value Proposition",
@@ -127,7 +134,7 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Intermediate",
             xp_value: 30,
-            tags: ["value proposition", "benefits", "messaging"]
+            tags: ["value proposition", "benefits", "messaging"],
           },
           {
             title: "Writing Clear and Resonant Messages",
@@ -135,7 +142,7 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Intermediate",
             xp_value: 35,
-            tags: ["writing", "clarity", "resonance"]
+            tags: ["writing", "clarity", "resonance"],
           },
           {
             title: "Adapting Messages for Different Audiences",
@@ -143,13 +150,14 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Advanced",
             xp_value: 30,
-            tags: ["audience", "adaptation", "personalization"]
-          }
-        ]
+            tags: ["audience", "adaptation", "personalization"],
+          },
+        ],
       },
       "Go-To-Market Strategy": {
         slug: "go-to-market-strategy",
-        description: "Design comprehensive go-to-market strategies that ensure successful product launches and sustainable growth.",
+        description:
+          "Design comprehensive go-to-market strategies that ensure successful product launches and sustainable growth.",
         xp_value: 130,
         lessons: [
           {
@@ -158,7 +166,7 @@ const TRACK_DATA = {
             duration: 25,
             difficulty: "Beginner",
             xp_value: 20,
-            tags: ["GTM", "strategy", "fundamentals"]
+            tags: ["GTM", "strategy", "fundamentals"],
           },
           {
             title: "GTM vs. Launch vs. Messaging",
@@ -166,7 +174,7 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Beginner",
             xp_value: 25,
-            tags: ["GTM", "launch", "messaging", "differences"]
+            tags: ["GTM", "launch", "messaging", "differences"],
           },
           {
             title: "Components of an Effective GTM Strategy",
@@ -174,7 +182,7 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Intermediate",
             xp_value: 35,
-            tags: ["GTM", "components", "strategy"]
+            tags: ["GTM", "components", "strategy"],
           },
           {
             title: "Setting GTM Goals and Metrics",
@@ -182,7 +190,7 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Intermediate",
             xp_value: 30,
-            tags: ["goals", "metrics", "KPIs"]
+            tags: ["goals", "metrics", "KPIs"],
           },
           {
             title: "Identifying Target Customers",
@@ -190,7 +198,7 @@ const TRACK_DATA = {
             duration: 30,
             difficulty: "Intermediate",
             xp_value: 25,
-            tags: ["target customers", "segmentation", "ICP"]
+            tags: ["target customers", "segmentation", "ICP"],
           },
           {
             title: "Channel and Budget Planning",
@@ -198,18 +206,19 @@ const TRACK_DATA = {
             duration: 35,
             difficulty: "Advanced",
             xp_value: 30,
-            tags: ["channels", "budget", "planning"]
-          }
-        ]
-      }
-    }
+            tags: ["channels", "budget", "planning"],
+          },
+        ],
+      },
+    },
   },
   "Professional Product Marketer": {
     slug: "professional-product-marketer",
     courses: {
       "Advanced Strategic Positioning": {
         slug: "advanced-strategic-positioning",
-        description: "Master sophisticated positioning strategies for complex products, multi-segment markets, and competitive landscapes.",
+        description:
+          "Master sophisticated positioning strategies for complex products, multi-segment markets, and competitive landscapes.",
         xp_value: 160,
         lessons: [
           {
@@ -218,7 +227,7 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            tags: ["enterprise", "positioning", "B2B"]
+            tags: ["enterprise", "positioning", "B2B"],
           },
           {
             title: "Multi-Product Portfolio Positioning",
@@ -226,7 +235,7 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            tags: ["portfolio", "positioning", "product suite"]
+            tags: ["portfolio", "positioning", "product suite"],
           },
           {
             title: "International Market Positioning",
@@ -234,7 +243,7 @@ const TRACK_DATA = {
             duration: 55,
             difficulty: "Advanced",
             xp_value: 50,
-            tags: ["international", "global markets", "localization"]
+            tags: ["international", "global markets", "localization"],
           },
           {
             title: "Positioning in Emerging Markets",
@@ -242,13 +251,14 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Advanced",
             xp_value: 35,
-            tags: ["emerging markets", "new categories", "innovation"]
-          }
-        ]
+            tags: ["emerging markets", "new categories", "innovation"],
+          },
+        ],
       },
       "Advanced Messaging Architecture": {
         slug: "advanced-messaging-architecture",
-        description: "Build comprehensive messaging systems that work across complex organizations, multiple audiences, and varied channels.",
+        description:
+          "Build comprehensive messaging systems that work across complex organizations, multiple audiences, and varied channels.",
         xp_value: 140,
         lessons: [
           {
@@ -257,7 +267,7 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            tags: ["message hierarchy", "systems", "architecture"]
+            tags: ["message hierarchy", "systems", "architecture"],
           },
           {
             title: "Persona-Based Messaging Strategy",
@@ -265,7 +275,7 @@ const TRACK_DATA = {
             duration: 40,
             difficulty: "Advanced",
             xp_value: 35,
-            tags: ["personas", "messaging", "segmentation"]
+            tags: ["personas", "messaging", "segmentation"],
           },
           {
             title: "Channel-Specific Message Adaptation",
@@ -273,7 +283,7 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            tags: ["channels", "adaptation", "omnichannel"]
+            tags: ["channels", "adaptation", "omnichannel"],
           },
           {
             title: "Message Testing and Optimization",
@@ -281,13 +291,14 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            tags: ["testing", "optimization", "measurement"]
-          }
-        ]
+            tags: ["testing", "optimization", "measurement"],
+          },
+        ],
       },
       "Enterprise GTM Strategy": {
         slug: "enterprise-gtm-strategy",
-        description: "Design and execute sophisticated go-to-market strategies for enterprise products, including partner ecosystems and complex sales cycles.",
+        description:
+          "Design and execute sophisticated go-to-market strategies for enterprise products, including partner ecosystems and complex sales cycles.",
         xp_value: 180,
         lessons: [
           {
@@ -296,7 +307,7 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            tags: ["sales enablement", "enterprise", "B2B"]
+            tags: ["sales enablement", "enterprise", "B2B"],
           },
           {
             title: "Partner Ecosystem Strategy",
@@ -304,7 +315,7 @@ const TRACK_DATA = {
             duration: 55,
             difficulty: "Advanced",
             xp_value: 50,
-            tags: ["partners", "ecosystem", "channel strategy"]
+            tags: ["partners", "ecosystem", "channel strategy"],
           },
           {
             title: "Account-Based Marketing",
@@ -312,7 +323,7 @@ const TRACK_DATA = {
             duration: 45,
             difficulty: "Advanced",
             xp_value: 40,
-            tags: ["ABM", "account-based", "enterprise"]
+            tags: ["ABM", "account-based", "enterprise"],
           },
           {
             title: "Complex Deal Strategy",
@@ -320,7 +331,7 @@ const TRACK_DATA = {
             duration: 50,
             difficulty: "Advanced",
             xp_value: 45,
-            tags: ["complex sales", "deal strategy", "enterprise"]
+            tags: ["complex sales", "deal strategy", "enterprise"],
           },
           {
             title: "Global Launch Orchestration",
@@ -328,12 +339,12 @@ const TRACK_DATA = {
             duration: 60,
             difficulty: "Advanced",
             xp_value: 55,
-            tags: ["global launch", "orchestration", "scaling"]
-          }
-        ]
-      }
-    }
-  }
+            tags: ["global launch", "orchestration", "scaling"],
+          },
+        ],
+      },
+    },
+  },
 };
 
 // Helper function to make authenticated API requests
@@ -343,8 +354,8 @@ async function apiRequest(method, endpoint, data = null) {
   const options = {
     method,
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${CONFIG.API_TOKEN}`,
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${CONFIG.API_TOKEN}`,
     },
   };
 
@@ -360,7 +371,14 @@ async function apiRequest(method, endpoint, data = null) {
       throw new Error(`API Error ${response.status}: ${errorText}`);
     }
 
-    return await response.json();
+    // DELETE requests return 204 No Content (no JSON body)
+    if (method === "DELETE" && response.status === 204) {
+      return { success: true };
+    }
+
+    // For other successful responses, parse JSON
+    const text = await response.text();
+    return text ? JSON.parse(text) : {};
   } catch (error) {
     console.error(`❌ Failed ${method} ${endpoint}:`, error.message);
     throw error;
@@ -415,53 +433,59 @@ function createQuizQuestions(lessonTitle, lessonTags) {
   return [
     {
       questionText: `What is the primary objective of ${lessonTitle.toLowerCase()}?`,
-      questionType: 'multipleChoice',
+      questionType: "multipleChoice",
       order: 1,
       answerOptions: [
-        { title: 'To understand core principles and frameworks', isCorrect: true },
-        { title: 'To memorize industry statistics', isCorrect: false },
-        { title: 'To complete the course quickly', isCorrect: false },
-        { title: 'To collect certification points', isCorrect: false }
-      ]
+        {
+          title: "To understand core principles and frameworks",
+          isCorrect: true,
+        },
+        { title: "To memorize industry statistics", isCorrect: false },
+        { title: "To complete the course quickly", isCorrect: false },
+        { title: "To collect certification points", isCorrect: false },
+      ],
     },
     {
-      questionText: 'Practical application is more important than theoretical knowledge in marketing.',
-      questionType: 'trueFalse',
+      questionText:
+        "Practical application is more important than theoretical knowledge in marketing.",
+      questionType: "trueFalse",
       order: 2,
       answerOptions: [
-        { title: 'True', isCorrect: true },
-        { title: 'False', isCorrect: false }
-      ]
+        { title: "True", isCorrect: true },
+        { title: "False", isCorrect: false },
+      ],
     },
     {
-      questionText: 'Which of the following are key success factors? (Select all that apply)',
-      questionType: 'multiSelect',
+      questionText:
+        "Which of the following are key success factors? (Select all that apply)",
+      questionType: "multiSelect",
       order: 3,
       answerOptions: [
-        { title: 'Clear objectives', isCorrect: true },
-        { title: 'Data-driven decisions', isCorrect: true },
-        { title: 'Ignoring customer feedback', isCorrect: false },
-        { title: 'Continuous optimization', isCorrect: true },
-        { title: 'One-size-fits-all approach', isCorrect: false }
-      ]
-    }
+        { title: "Clear objectives", isCorrect: true },
+        { title: "Data-driven decisions", isCorrect: true },
+        { title: "Ignoring customer feedback", isCorrect: false },
+        { title: "Continuous optimization", isCorrect: true },
+        { title: "One-size-fits-all approach", isCorrect: false },
+      ],
+    },
   ];
 }
 
 // Clear all existing data
 async function clearExistingData() {
-  console.log('🗑️  Clearing existing data...');
+  console.log("🗑️  Clearing existing data...");
 
   try {
     // Get all existing data to delete
-    const [lessons, quizzes, questions, courses, tracks, authors] = await Promise.all([
-      apiRequest('GET', '/api/lessons'),
-      apiRequest('GET', '/api/quizzes'),
-      apiRequest('GET', '/api/questions'),
-      apiRequest('GET', '/api/courses'),
-      apiRequest('GET', '/api/tracks'),
-      apiRequest('GET', '/api/authors')
-    ]);
+    const [lessons, quizzes, questions, courses, tracks, authors] =
+      await Promise.all([
+        apiRequest("GET", "/api/lessons"),
+        apiRequest("GET", "/api/quizzes"),
+        apiRequest("GET", "/api/questions"),
+        apiRequest("GET", "/api/courses"),
+        apiRequest("GET", "/api/tracks"),
+        apiRequest("GET", "/api/authors"),
+      ]);
 
     // Delete in correct order (reverse of creation)
     const deletions = [];
@@ -469,55 +493,63 @@ async function clearExistingData() {
     // Delete lessons
     if (lessons.data) {
       for (const lesson of lessons.data) {
-        deletions.push(apiRequest('DELETE', `/api/lessons/${lesson.documentId}`));
+        deletions.push(
+          apiRequest("DELETE", `/api/lessons/${lesson.documentId}`)
+        );
       }
     }
 
     // Delete questions
     if (questions.data) {
       for (const question of questions.data) {
-        deletions.push(apiRequest('DELETE', `/api/questions/${question.documentId}`));
+        deletions.push(
+          apiRequest("DELETE", `/api/questions/${question.documentId}`)
+        );
       }
     }
 
     // Delete quizzes
     if (quizzes.data) {
       for (const quiz of quizzes.data) {
-        deletions.push(apiRequest('DELETE', `/api/quizzes/${quiz.documentId}`));
+        deletions.push(apiRequest("DELETE", `/api/quizzes/${quiz.documentId}`));
       }
     }
 
     // Delete courses
     if (courses.data) {
       for (const course of courses.data) {
-        deletions.push(apiRequest('DELETE', `/api/courses/${course.documentId}`));
+        deletions.push(
+          apiRequest("DELETE", `/api/courses/${course.documentId}`)
+        );
       }
     }
 
     // Delete tracks
     if (tracks.data) {
       for (const track of tracks.data) {
-        deletions.push(apiRequest('DELETE', `/api/tracks/${track.documentId}`));
+        deletions.push(apiRequest("DELETE", `/api/tracks/${track.documentId}`));
       }
     }
 
     // Delete authors
     if (authors.data) {
       for (const author of authors.data) {
-        deletions.push(apiRequest('DELETE', `/api/authors/${author.documentId}`));
+        deletions.push(
+          apiRequest("DELETE", `/api/authors/${author.documentId}`)
+        );
       }
     }
 
     await Promise.all(deletions);
-    console.log('   ✅ Cleared all existing data');
+    console.log("   ✅ Cleared all existing data");
   } catch (error) {
-    console.warn('⚠️  Some data may not have been cleared:', error.message);
+    console.warn("⚠️  Some data may not have been cleared:", error.message);
   }
 }
 
 // Main seeding function
 async function seedViaRestApi() {
-  console.log('🌱 Starting REST API seeding for Strapi Cloud...\n');
+  console.log("🌱 Starting REST API seeding for Strapi Cloud...\n");
   console.log(`🔗 Target URL: ${CONFIG.STRAPI_URL}`);
   console.log(`🔑 Using API Token: ${CONFIG.API_TOKEN.substring(0, 10)}...\n`);
 
@@ -526,17 +558,15 @@ async function seedViaRestApi() {
     await clearExistingData();
 
     // Create default author
-    console.log('👤 Creating default author...');
-    const authorResponse = await apiRequest('POST', '/api/authors', {
+    console.log("👤 Creating default author...");
+    const authorResponse = await apiRequest("POST", "/api/authors", {
       data: {
-        name: 'Sarah Johnson',
-        title: 'Senior Marketing Strategist',
-        bio: 'Experienced marketing professional with 8+ years in product marketing, growth strategy, and content development.',
-        publishedAt: new Date().toISOString(),
+        name: "Sarah Johnson",
+        email: "sarah.johnson@majorly.com",
       },
     });
     const defaultAuthor = authorResponse.data;
-    console.log('✅ Created default author:', defaultAuthor.name);
+    console.log("✅ Created default author:", defaultAuthor.name);
 
     let trackOrder = 0;
     let totalCourses = 0;
@@ -548,7 +578,7 @@ async function seedViaRestApi() {
       console.log(`\n📚 Creating track: ${trackTitle}`);
 
       // Create Track
-      const trackResponse = await apiRequest('POST', '/api/tracks', {
+      const trackResponse = await apiRequest("POST", "/api/tracks", {
         data: {
           title: trackTitle,
           slug: trackData.slug,
@@ -562,13 +592,15 @@ async function seedViaRestApi() {
       let courseOrder = 0;
 
       // Process courses for this track
-      for (const [courseTitle, courseData] of Object.entries(trackData.courses)) {
+      for (const [courseTitle, courseData] of Object.entries(
+        trackData.courses
+      )) {
         courseOrder++;
         totalCourses++;
         console.log(`  📖 Creating course: ${courseTitle}`);
 
         // Create Course
-        const courseResponse = await apiRequest('POST', '/api/courses', {
+        const courseResponse = await apiRequest("POST", "/api/courses", {
           data: {
             title: courseTitle,
             slug: courseData.slug,
@@ -593,7 +625,7 @@ async function seedViaRestApi() {
           console.log(`    📝 Creating lesson: ${lessonData.title}`);
 
           // Create Lesson
-          const lessonResponse = await apiRequest('POST', '/api/lessons', {
+          const lessonResponse = await apiRequest("POST", "/api/lessons", {
             data: {
               title: lessonData.title,
               slug: lessonData.slug,
@@ -604,7 +636,11 @@ async function seedViaRestApi() {
               ...(getRandomIcon() && { icon: getRandomIcon() }),
               tags: lessonData.tags,
               course: course.documentId,
-              content: createLessonContent(lessonData.title, lessonData.tags, defaultAuthor.documentId),
+              content: createLessonContent(
+                lessonData.title,
+                lessonData.tags,
+                defaultAuthor.documentId
+              ),
               publishedAt: new Date().toISOString(),
             },
           });
@@ -612,7 +648,7 @@ async function seedViaRestApi() {
           console.log(`      ✅ Created lesson: ${lesson.title}`);
 
           // Create Quiz for the lesson
-          const quizResponse = await apiRequest('POST', '/api/quizzes', {
+          const quizResponse = await apiRequest("POST", "/api/quizzes", {
             data: {
               title: `Quiz: ${lessonData.title}`,
               description: `Test your understanding of ${lessonData.title.toLowerCase()} concepts and best practices.`,
@@ -626,9 +662,12 @@ async function seedViaRestApi() {
           const quiz = quizResponse.data;
 
           // Create Questions for the quiz
-          const questions = createQuizQuestions(lessonData.title, lessonData.tags);
+          const questions = createQuizQuestions(
+            lessonData.title,
+            lessonData.tags
+          );
           for (const questionData of questions) {
-            await apiRequest('POST', '/api/questions', {
+            await apiRequest("POST", "/api/questions", {
               data: {
                 ...questionData,
                 quiz: quiz.documentId,
@@ -637,12 +676,14 @@ async function seedViaRestApi() {
             });
           }
 
-          console.log(`      ✅ Created quiz with questions for: ${lessonData.title}`);
+          console.log(
+            `      ✅ Created quiz with questions for: ${lessonData.title}`
+          );
         }
       }
     }
 
-    console.log('\n🎉 REST API seeding completed successfully!');
+    console.log("\n🎉 REST API seeding completed successfully!");
     console.log(`📊 Summary:`);
     console.log(`   - Tracks created: ${Object.keys(TRACK_DATA).length}`);
     console.log(`   - Courses created: ${totalCourses}`);
@@ -650,20 +691,24 @@ async function seedViaRestApi() {
 
     return true;
   } catch (error) {
-    console.error('❌ REST API seeding failed:', error);
+    console.error("❌ REST API seeding failed:", error);
     throw error;
   }
 }
 
 // Validate configuration
 function validateConfig() {
-  if (!CONFIG.STRAPI_URL || CONFIG.STRAPI_URL.includes('your-app-name')) {
-    console.error('❌ Please update STRAPI_URL in the script or set STRAPI_CLOUD_URL environment variable');
+  if (!CONFIG.STRAPI_URL || CONFIG.STRAPI_URL.includes("your-app-name")) {
+    console.error(
+      "❌ Please update STRAPI_URL in the script or set STRAPI_CLOUD_URL environment variable"
+    );
     process.exit(1);
   }
 
-  if (!CONFIG.API_TOKEN || CONFIG.API_TOKEN.includes('your-api-token')) {
-    console.error('❌ Please update API_TOKEN in the script or set STRAPI_CLOUD_API_TOKEN environment variable');
+  if (!CONFIG.API_TOKEN || CONFIG.API_TOKEN.includes("your-api-token")) {
+    console.error(
+      "❌ Please update API_TOKEN in the script or set STRAPI_CLOUD_API_TOKEN environment variable"
+    );
     process.exit(1);
   }
 }
@@ -672,13 +717,13 @@ function validateConfig() {
 async function main() {
   validateConfig();
 
-  console.log('🚀 Starting Strapi Cloud seeding via REST API...\n');
+  console.log("🚀 Starting Strapi Cloud seeding via REST API...\n");
 
   try {
     await seedViaRestApi();
-    console.log('\n🎉 All done! Seeding completed successfully.');
+    console.log("\n🎉 All done! Seeding completed successfully.");
   } catch (error) {
-    console.error('\n❌ Seeding failed:', error.message);
+    console.error("\n❌ Seeding failed:", error.message);
     process.exit(1);
   }
 
@@ -686,8 +731,8 @@ async function main() {
 }
 
 // Handle unhandled promise rejections
-process.on('unhandledRejection', (reason, promise) => {
-  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+process.on("unhandledRejection", (reason, promise) => {
+  console.log("Unhandled Rejection at:", promise, "reason:", reason);
   process.exit(1);
 });
 

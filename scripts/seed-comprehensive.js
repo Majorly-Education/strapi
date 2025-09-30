@@ -437,8 +437,7 @@ async function seedComprehensiveData(strapi) {
       {
         data: {
           name: "Sarah Johnson",
-          title: "Senior Marketing Strategist",
-          bio: "Experienced marketing professional with 8+ years in product marketing, growth strategy, and content development.",
+          email: "sarah.johnson@majorly.com",
           publishedAt: new Date(),
         },
       }
