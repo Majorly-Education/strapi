@@ -367,49 +367,46 @@ async function apiRequest(method, endpoint, data = null) {
   }
 }
 
-// Create lesson content template
+// Create high-quality lesson content template based on Figma design
 function createLessonContent(title, tags = [], authorId = null) {
   return {
-    __component: 'lesson.lesson-page-template-1',
+    __component: "lesson.lesson-page-template-1",
     author: authorId,
-    shortDescription: `<p>In this lesson on <strong>${title.toLowerCase()}</strong>, you will learn key concepts, practical frameworks, and actionable strategies that you can immediately apply to your work.</p>`,
+    shortDescription: `<p><span style="white-space:pre-wrap;">By the end of this module, learners will be able to:</span></p><ol><li><span style="white-space:pre-wrap;">Explain the importance of aligning business goals with audience segmentation</span></li><li><span style="white-space:pre-wrap;">Differentiate demographic, psychographic, and persona-based segmentation</span></li><li><span style="white-space:pre-wrap;">Develop survey questions to derive actionable insights</span></li><li><span style="white-space:pre-wrap;">Prioritize insights using editorial and strategic lenses</span></li></ol>`,
     sections: [
       {
-        __component: 'lesson.rich-text-section',
-        sectionTitle: 'Learning Objectives',
-        content: `<p>By the end of this lesson on <strong>${title.toLowerCase()}</strong>, you will be able to:</p><ul><li>Understand key concepts and theoretical foundations</li><li>Apply practical frameworks to real-world scenarios</li><li>Implement actionable strategies in your work</li><li>Recognize common pitfalls and how to avoid them</li></ul>`,
+        __component: "lesson.rich-text-section",
+        sectionTitle: "Starting with business goals",
+        content: `<p><span style="white-space:pre-wrap;">Every successful campaign begins by aligning with a clear business or brand goal.</span></p><p><span style="white-space:pre-wrap;">For example, in product marketing, your company goal might be to increase revenue growth in a specific segment, adoption of a new feature, cross-sell for existing customers, or expansion into a new market. For example, at Facebook for the Gen Z messenger campaign we discussed, the business goal was to attract a younger audience.</span></p><p><span style="white-space:pre-wrap;">These goals help you decide who to target and how to craft stories that will resonate and drive measurable outcomes.</span></p><p><span style="white-space:pre-wrap;">"The first step in earned storytelling is to clearly understand who we're trying to talk to. Too often brands are very vague and broad. For example, a client will say, "this is who we're going after, when in reality there will always be multiple different people who use your product in multiple different ways. And so any story you tell is not going to be an interesting story if you're speaking in such a broad way to people. So if you can understand exactly who you're talking to and what their connection is to the product or brand, you'll automatically have a much better jumping off point for your story.</span></p><p><span style="white-space:pre-wrap;">This is where segmentation comes in.</span></p><p><span style="white-space:pre-wrap;">Segmentation is the process of dividing your total addressable market into smaller, clearly defined groups of people or businesses that share common characteristics, needs, or behaviors, to enable targeted positioning, messaging, and go-to-market strategies.</span></p><p><span style="white-space:pre-wrap;">Good segmentation is about identifying groups that differ meaningfully in how they use your product, what they need, and how they make decisions—allowing you to tailor experiences that increase adoption, engagement, and retention.</span><br>&nbsp;</p>`,
       },
       {
-        __component: 'lesson.rich-text-section',
-        sectionTitle: 'Key Concepts',
-        content: '<p>This section covers the fundamental principles and theoretical foundations you need to master. We\'ll explore industry best practices, proven methodologies, and the strategic thinking behind successful implementation.</p>',
+        __component: "lesson.rich-text-section",
+        sectionTitle: "Why it matters",
+        content: `<p><span style="white-space:pre-wrap;">Segmentation ensures your marketing, positioning, and product decisions are:</span></p><p>✅ <span style="white-space:pre-wrap;">Relevant (resonates with what people actually care about)</span></p><p>✅ <span style="white-space:pre-wrap;">Targeted (reduces wasted spend and increases conversion)</span></p><p>✅ <span style="white-space:pre-wrap;">Actionable (guides pricing, channels, and product features)</span></p><p>✅ <span style="white-space:pre-wrap;">Aligned with business goals (prioritizes segments with the highest potential value)</span></p>`,
       },
       {
-        __component: 'lesson.rich-text-section',
-        sectionTitle: 'Practical Applications',
-        content: '<p>Learn how to apply these concepts in real-world marketing scenarios with hands-on examples and case studies. We\'ll walk through step-by-step processes and demonstrate how theory translates into practice.</p>',
+        __component: "lesson.rich-text-section",
+        sectionTitle: "How segmentation connects to your work",
+        content: `<p><span style="white-space:pre-wrap;">Identifies which customer groups to prioritize in launches and campaigns.</span></p><ul><li><span style="white-space:pre-wrap;">Informs messaging that addresses the specific pain points, motivations, and language of each segment.</span></li><li><span style="white-space:pre-wrap;">Shapes pricing and packaging according to willingness to pay by segment.</span></li><li><span style="white-space:pre-wrap;">Helps product teams prioritize roadmap items based on segment needs.</span></li></ul><p><span style="white-space:pre-wrap;">There are a variety of common ways to create smaller groups of customers that often are combined to create a more nuanced segment:</span></p><ol><li><span style="white-space:pre-wrap;">Demographic Segmentation, which includes quantifiable traits like age, gender, income, and location</span></li></ol><p><span style="white-space:pre-wrap;">For example, "Millennial women in urban areas." For B2B, this could include company size or industry. Use this type of segmentation for early-stage audience sizing, top-of-funnel targeting, or broad consumer products.</span></p><ol start="2"><li><span style="white-space:pre-wrap;">Geographic Segmentation, which includes country, region, city, climate, or even urban vs. rural</span></li></ol><p><span style="white-space:pre-wrap;">Useful to use: When location impacts product usage (e.g., legal, climate, cultural, or regulatory planning local GTM strategies.</span></p><ol start="3"><li><span style="white-space:pre-wrap;">Behavioral segmentation, which includes purchase behavior, product usage frequency, loyalty, readiness to buy, feature adoption, and engagement level (especially for SaaS)</span></li></ol><p>❌ <span style="white-space:pre-wrap;">When to use: lifecycle marketing, churn prevention, upsell campaigns, or onboarding improvements.</span></p><ol start="4"><li><span style="white-space:pre-wrap;">Psychographic Segmentation, which dives deeper into values, attitudes, personality and lifestyles</span></li><li><span style="white-space:pre-wrap;">Needs-based Segmentation, based on customer pains and jobs-to-be-done</span></li></ol><p><span style="white-space:pre-wrap;">Technology platforms can also be included in segmentations.</span></p><p><span style="white-space:pre-wrap;">Here's an example of two potential segments that Spotify might have built out for their user base:</span></p>`,
+      },
+    ],
+    segments: [
+      {
+        __component: "lesson.segment",
+        title: 'Segment 1: "Comfort-Driven Loyalists"',
+        content: `<p><span style="white-space:pre-wrap;">Definition: </span><br><span style="white-space:pre-wrap;">Users who primarily listen to familiar music, seeking emotional connection, stability, and comfort, often using Spotify during routine activities.</span></p><p><span style="white-space:pre-wrap;">Behavioral Markers:</span></p><ul><li><span style="white-space:pre-wrap;">70%+ of listening time spent on previously saved playlists and "liked" songs</span></li><li><span style="white-space:pre-wrap;">Low Discover Weekly and Release Radar engagement (&lt;1 play per week)</span></li><li><span style="white-space:pre-wrap;">High repeat listening on the same albums or artist playlists</span></li><li><span style="white-space:pre-wrap;">Listening concentrated during daily routines: morning prep, commutes, chores </span></li></ul><p><span style="white-space:pre-wrap;">Psychographics:</span></p><ul><li><span style="white-space:pre-wrap;">Value consistency, nostalgia, and music as a background companion</span></li><li><span style="white-space:pre-wrap;">Less risk-taking in music discovery due to cognitive load or emotional preference</span></li><li><span style="white-space:pre-wrap;">Music as a "safe zone" rather than an exploration tool </span></li></ul><p><span style="white-space:pre-wrap;">Needs:</span></p><ul><li><span style="white-space:pre-wrap;">Easy access to "feel-good" familiar tracks</span></li><li><span style="white-space:pre-wrap;">Low-friction re-engagement with old favorites</span></li><li><span style="white-space:pre-wrap;">Occasional gentle nudges to rediscover forgotten favorites</span></li></ul>`,
       },
       {
-        __component: 'lesson.rich-text-section',
-        sectionTitle: 'Best Practices',
-        content: '<p>Discover industry best practices and proven strategies that successful marketers use to achieve results. These insights come from years of experience and real-world testing.</p>',
+        __component: "lesson.segment",
+        title: 'Segment 2: "Curious Audio Explorers"',
+        content: `<p><span style="white-space:pre-wrap;">Definition:</span><br><span style="white-space:pre-wrap;">Users who actively seek novelty in music and podcasts, using Spotify as a discovery engine to find new artists, genres, and trends.</span></p><p><span style="white-space:pre-wrap;">Behavioral Markers:</span></p><ul><li><span style="white-space:pre-wrap;">High Discover Weekly and Release Radar engagement (3+ plays/week)</span></li><li><span style="white-space:pre-wrap;">Frequent playlist curation and following new artists</span></li><li><span style="white-space:pre-wrap;">Low repeat listening on single tracks; preference for playlist surfing</span></li><li><span style="white-space:pre-wrap;">Engagement with genre-diverse content and personalized recommendations</span></li></ul><p><span style="white-space:pre-wrap;">Psychographics:</span></p><ul><li><span style="white-space:pre-wrap;">Seek novelty and cultural connection through music</span></li><li><span style="white-space:pre-wrap;">Enjoy being early adopters of trends and sharing new finds with friends</span></li><li><span style="white-space:pre-wrap;">Value music as a self-expression and identity extension tool</span></li></ul><p><span style="white-space:pre-wrap;">Needs:</span></p><ul><li><span style="white-space:pre-wrap;">Tailored, high-quality discovery experiences</span></li><li><span style="white-space:pre-wrap;">Social and community validation ("you're the first to find this")</span></li><li><span style="white-space:pre-wrap;">Tools for organizing and sharing new discoveries</span></li></ul>`,
       },
-      {
-        __component: 'lesson.rich-text-section',
-        sectionTitle: 'Common Pitfalls',
-        content: '<p>Understand common mistakes to avoid and how to overcome typical challenges in implementation. Learning from others\' mistakes can save you time and resources.</p>',
-      },
-      {
-        __component: 'lesson.rich-text-section',
-        sectionTitle: 'Next Steps',
-        content: '<p>Action items and resources to continue your learning journey and apply what you\'ve learned. Take these concrete steps to implement your new knowledge.</p>',
-      }
     ],
     note: {
-      __component: 'lesson.note',
-      title: '📝 Key Learning Notes',
-      content: `Key Tags: ${tags.join(', ')}\n\n💡 Pro Tip: Practice these concepts with real examples from your own work or industry to solidify your understanding.`
-    }
+      __component: "lesson.note",
+      title: "Sample note:",
+      content: `This step will probably take 30+ minutes for you to complete since you are creating a full resume and incorporating AI-driven feedback, so make sure to leave yourself time, or be willing to finish it in chunks.`,
+    },
   };
 }
 
