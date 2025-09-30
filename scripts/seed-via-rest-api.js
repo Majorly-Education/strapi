@@ -386,9 +386,10 @@ async function apiRequest(method, endpoint, data = null) {
 }
 
 // Create high-quality lesson content template based on Figma design
+// Note: For REST API, we don't include __component at the top level
+// because the content field type already defines the component in the schema
 function createLessonContent(title, tags = [], authorId = null) {
   return {
-    __component: "lesson.lesson-page-template-1",
     author: authorId,
     shortDescription: `<p><span style="white-space:pre-wrap;">By the end of this module, learners will be able to:</span></p><ol><li><span style="white-space:pre-wrap;">Explain the importance of aligning business goals with audience segmentation</span></li><li><span style="white-space:pre-wrap;">Differentiate demographic, psychographic, and persona-based segmentation</span></li><li><span style="white-space:pre-wrap;">Develop survey questions to derive actionable insights</span></li><li><span style="white-space:pre-wrap;">Prioritize insights using editorial and strategic lenses</span></li></ol>`,
     sections: [
@@ -421,7 +422,6 @@ function createLessonContent(title, tags = [], authorId = null) {
       },
     ],
     note: {
-      __component: "lesson.note",
       title: "Sample note:",
       content: `This step will probably take 30+ minutes for you to complete since you are creating a full resume and incorporating AI-driven feedback, so make sure to leave yourself time, or be willing to finish it in chunks.`,
     },
