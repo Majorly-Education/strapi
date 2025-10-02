@@ -476,10 +476,11 @@ const QUIZ_DATA = [
 
 // Main seed function
 async function seedQuizzes() {
-  const strapiUrl = process.env.STRAPI_URL || "http://127.0.0.1:1337";
+  const strapiUrl =
+    process.env.STRAPI_URL || "https://prized-cuddle-254dd791cc.strapiapp.com";
   const apiToken =
     process.env.STRAPI_API_TOKEN ||
-    "d8670ca668b7be1d4bb6cd0ed8244b06f219a111bb8c259f916858a5fbaf1d4ee5584109e8cca36052f3589a18d359cbcfc2741ccf2164db4ed39626e9b6015d14abce90dfb4fbf95ef8d7f6a4552644022d42b1d1979b399277cb146e5d57d2ad9be3cf60ea992749080f6b08b8e706bddaf646d47e223117f659d5e3901bc0";
+    "fcd1f547bc4ff8deda6c43a1a55038965d0fbc93439bb77719e95ee9628ac196b87abb1c04139a302d9e55fdfb8f283b6f8e4f7f645b56af06b38ff6d9f39dcfcc41ef23a163dcf4703eefeec7ab25bbe7d2fc6cf16913923c90bcaebf0c05ab4365c26fd1dad1a36227a7abd416f7887ce2a92988a1bdc7c0350e01b3337a76";
 
   if (!apiToken) {
     console.error("❌ STRAPI_API_TOKEN environment variable is required");
@@ -525,13 +526,18 @@ async function seedQuizzes() {
           }
 
           // Then delete
-          const deleteResponse = await fetch(`${strapiUrl}/api/quizzes/${quiz.id}`, {
-            method: "DELETE",
-            headers,
-          });
+          const deleteResponse = await fetch(
+            `${strapiUrl}/api/quizzes/${quiz.id}`,
+            {
+              method: "DELETE",
+              headers,
+            }
+          );
 
           if (deleteResponse.ok) {
-            console.log(`  ✅ Deleted quiz: ${quiz.attributes?.slug || quiz.id}`);
+            console.log(
+              `  ✅ Deleted quiz: ${quiz.attributes?.slug || quiz.id}`
+            );
           } else {
             const error = await deleteResponse.text();
             console.log(`  ⚠️  Failed to delete quiz ${quiz.id}: ${error}`);
@@ -564,7 +570,7 @@ async function seedQuizzes() {
       console.log("⏳ Waiting 3 seconds for database to sync...\n");
 
       // Wait for database to properly clear unique constraints
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
       // Verify cleanup - check if any quizzes still exist and delete them again
       const verifyResponse = await fetch(
@@ -575,22 +581,29 @@ async function seedQuizzes() {
       if (verifyResponse.ok) {
         const verifyData = await verifyResponse.json();
         if (verifyData.data && verifyData.data.length > 0) {
-          console.log(`⚠️  Warning: ${verifyData.data.length} quizzes still exist after cleanup!`);
-          console.log(`   These quizzes have empty slugs. Force deleting them now...`);
+          console.log(
+            `⚠️  Warning: ${verifyData.data.length} quizzes still exist after cleanup!`
+          );
+          console.log(
+            `   These quizzes have empty slugs. Force deleting them now...`
+          );
 
           // Force delete remaining quizzes by ID
           for (const quiz of verifyData.data) {
-            const deleteResp = await fetch(`${strapiUrl}/api/quizzes/${quiz.id}`, {
-              method: "DELETE",
-              headers,
-            });
+            const deleteResp = await fetch(
+              `${strapiUrl}/api/quizzes/${quiz.id}`,
+              {
+                method: "DELETE",
+                headers,
+              }
+            );
             if (deleteResp.ok) {
               console.log(`  ✅ Force deleted quiz ID: ${quiz.id}`);
             }
           }
 
           console.log("  ⏳ Waiting 2 more seconds...\n");
-          await new Promise(resolve => setTimeout(resolve, 2000));
+          await new Promise((resolve) => setTimeout(resolve, 2000));
         } else {
           console.log("✅ Verified: All quizzes successfully deleted\n");
         }
@@ -631,7 +644,9 @@ async function seedQuizzes() {
 
       const lessonId = lessonResult.data[0].id;
       const lessonDocumentId = lessonResult.data[0].documentId;
-      console.log(`✅ Found lesson ID: ${lessonId}, documentId: ${lessonDocumentId}`);
+      console.log(
+        `✅ Found lesson ID: ${lessonId}, documentId: ${lessonDocumentId}`
+      );
 
       // Check if quiz already exists for this lesson (only if not resetting)
       if (!RESET_BEFORE_SEED) {
@@ -653,7 +668,9 @@ async function seedQuizzes() {
       // Create questions first
       const questionIds = [];
 
-      console.log(`\n  Creating ${quizData.quiz.questions.length} questions for this quiz...`);
+      console.log(
+        `\n  Creating ${quizData.quiz.questions.length} questions for this quiz...`
+      );
 
       for (const questionData of quizData.quiz.questions) {
         console.log(
@@ -686,7 +703,9 @@ async function seedQuizzes() {
 
         const questionResult = await questionResponse.json();
         questionIds.push(questionResult.data.documentId);
-        console.log(`  ✅ Created question ID: ${questionResult.data.id}, documentId: ${questionResult.data.documentId}`);
+        console.log(
+          `  ✅ Created question ID: ${questionResult.data.id}, documentId: ${questionResult.data.documentId}`
+        );
       }
 
       // Create the quiz with relations
@@ -695,10 +714,12 @@ async function seedQuizzes() {
       // Generate slug from title (lowercase, replace spaces with hyphens)
       const generatedSlug = quizData.quiz.title
         .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
 
-      console.log(`  📝 Generated slug: "${generatedSlug}" from title: "${quizData.quiz.title}"`);
+      console.log(
+        `  📝 Generated slug: "${generatedSlug}" from title: "${quizData.quiz.title}"`
+      );
 
       // NOTE: Do not include 'questions' array here because the relation is mappedBy Quiz.questions
       // The relation is managed on the Question side (manyToOne), so we link questions to quiz later
@@ -734,47 +755,86 @@ async function seedQuizzes() {
 
       const quizResult = await quizResponse.json();
       const quizDocumentId = quizResult.data.documentId;
-      console.log(`✅ Created quiz ID: ${quizResult.data.id}, documentId: ${quizDocumentId}`);
+      console.log(
+        `✅ Created quiz ID: ${quizResult.data.id}, documentId: ${quizDocumentId}`
+      );
       console.log(`   Slug: ${generatedSlug}`);
-      console.log(`   Question IDs for this quiz: [${questionIds.join(', ')}]`);
+      console.log(`   Question IDs for this quiz: [${questionIds.join(", ")}]`);
 
       // Update questions to link back to quiz (using documentId for Strapi v5)
       console.log(`  🔗 Linking ${questionIds.length} questions to quiz...`);
       for (const questionDocId of questionIds) {
-        const linkResponse = await fetch(`${strapiUrl}/api/questions/${questionDocId}`, {
-          method: "PUT",
-          headers,
-          body: JSON.stringify({
-            data: {
-              quiz: quizDocumentId,
-            },
-          }),
-        });
+        const linkResponse = await fetch(
+          `${strapiUrl}/api/questions/${questionDocId}`,
+          {
+            method: "PUT",
+            headers,
+            body: JSON.stringify({
+              data: {
+                quiz: quizDocumentId,
+              },
+            }),
+          }
+        );
         if (!linkResponse.ok) {
           const errorText = await linkResponse.text();
-          console.error(`  ❌ Failed to link question ${questionDocId} to quiz: ${errorText}`);
+          console.error(
+            `  ❌ Failed to link question ${questionDocId} to quiz: ${errorText}`
+          );
         } else {
           console.log(`  ✅ Linked question ${questionDocId} to quiz`);
         }
       }
-      console.log(`  ✅ Finished linking ${questionIds.length} questions to quiz`);
+      console.log(
+        `  ✅ Finished linking ${questionIds.length} questions to quiz`
+      );
 
       // Update lesson to link to quiz (for the oneToOne relation - using documentId)
       console.log(`  🔗 Linking lesson to quiz...`);
-      const lessonLinkResponse = await fetch(`${strapiUrl}/api/lessons/${lessonDocumentId}`, {
-        method: "PUT",
-        headers,
-        body: JSON.stringify({
+
+      // First, fetch the current lesson data to preserve existing fields
+      const currentLessonResponse = await fetch(
+        `${strapiUrl}/api/lessons/${lessonDocumentId}?populate=*`,
+        { headers }
+      );
+
+      if (!currentLessonResponse.ok) {
+        console.error(`  ❌ Failed to fetch current lesson data`);
+      } else {
+        const currentLessonData = await currentLessonResponse.json();
+        const currentLesson = currentLessonData.data?.attributes || {};
+
+        // Prepare update payload with all required fields
+        const updatePayload = {
           data: {
             quiz: quizDocumentId,
-          },
-        }),
-      });
-      if (!lessonLinkResponse.ok) {
-        const errorText = await lessonLinkResponse.text();
-        console.error(`  ❌ Failed to link lesson to quiz: ${errorText}`);
-      } else {
-        console.log(`  ✅ Linked lesson to quiz`);
+            // Preserve existing shortDescription or provide default
+            shortDescription: currentLesson.shortDescription || "This lesson covers important concepts.",
+            // Preserve existing media or provide default structure
+            media: currentLesson.media?.map(item => ({
+              ...item,
+              title: item.title || "Media Item",
+              shortDescription: item.shortDescription || "Media description",
+              transcript: item.transcript || "No transcript available"
+            })) || []
+          }
+        };
+
+        const lessonLinkResponse = await fetch(
+          `${strapiUrl}/api/lessons/${lessonDocumentId}`,
+          {
+            method: "PUT",
+            headers,
+            body: JSON.stringify(updatePayload),
+          }
+        );
+
+        if (!lessonLinkResponse.ok) {
+          const errorText = await lessonLinkResponse.text();
+          console.error(`  ❌ Failed to link lesson to quiz: ${errorText}`);
+        } else {
+          console.log(`  ✅ Linked lesson to quiz`);
+        }
       }
 
       createdQuizzes++;
