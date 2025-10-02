@@ -84,6 +84,24 @@
       "relation": "oneToOne",
       "target": "api::quiz.quiz",
       "inversedBy": "lesson"
+    },
+    "shortDescription": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "required": true
+    },
+    "resourceFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

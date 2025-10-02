@@ -10,7 +10,9 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["videos"]
+      "allowedTypes": [
+        "videos"
+      ]
     },
     "caption": {
       "type": "string"
@@ -22,6 +24,22 @@
     "controls": {
       "type": "boolean",
       "default": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "required": true
+    },
+    "transcript": {
+      "type": "text",
+      "required": true
     }
   }
 }

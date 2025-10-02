@@ -83,6 +83,16 @@ export interface ContentVideo extends Struct.ComponentSchema {
     autoplay: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     caption: Schema.Attribute.String;
     controls: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    shortDescription: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    transcript: Schema.Attribute.Text & Schema.Attribute.Required;
     video: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
   };
 }
