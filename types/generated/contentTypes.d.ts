@@ -610,6 +610,7 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
     module: Schema.Attribute.Relation<'manyToOne', 'api::module.module'>;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
+    quiz: Schema.Attribute.Relation<'oneToOne', 'api::quiz.quiz'>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     tags: Schema.Attribute.JSON;
     title: Schema.Attribute.String & Schema.Attribute.Required;

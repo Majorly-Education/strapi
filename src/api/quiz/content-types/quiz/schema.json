@@ -22,7 +22,8 @@
     "lesson": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::lesson.lesson"
+      "target": "api::lesson.lesson",
+      "inversedBy": "quiz"
     },
     "description": {
       "type": "text"

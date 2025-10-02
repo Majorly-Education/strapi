@@ -10,6 +10,7 @@
     "seed:example": "node ./scripts/seed.js",
     "seed:comprehensive": "node ./scripts/run-comprehensive-seed.js",
     "seed:cloud": "node ./scripts/seed-via-rest-api.js",
+    "seed:quizzes": "node ./scripts/seed-quizzes.js",
     "start": "strapi start",
     "strapi": "strapi"
   },
