@@ -683,6 +683,7 @@ async function seedViaRestApi() {
               ...(getRandomIcon() && { icon: getRandomIcon() }),
               tags: lessonData.tags,
               course: course.documentId,
+              shortDescription: `<p>By the end of this lesson, you will be able to understand ${lessonData.title.toLowerCase()} and apply key concepts to your product marketing strategy.</p>`,
               content: createLessonContent(
                 lessonData.title,
                 lessonData.tags,
