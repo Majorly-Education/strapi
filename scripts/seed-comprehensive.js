@@ -8,7 +8,7 @@ const ICON_MEDIA_IDS = [
   // Add your media IDs here, e.g.:
   // 1, 2, 3
   // If empty, no icons will be assigned
-  16, 15, 13, 14,
+  10,
 ];
 
 // Helper function to get a random icon ID from the array
