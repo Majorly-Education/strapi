@@ -12,9 +12,7 @@ This script seeds quiz data into Strapi for existing lessons. It creates quizzes
 - `multiSelect` - Multiple correct answers selection
 - `dragDropCategorize` - Drag items into categories
 - `dragDropRanking` - Drag items to rank/order them
-
-❌ **Not Included:**
-- `fillInBlanks` - UI not fully functional yet
+- `fillInBlanks` - Fill in the blanks with dropdown selections or text input
 
 ## Prerequisites
 
@@ -66,23 +64,24 @@ npm run seed:quizzes
 The script creates **3 quizzes** for these lessons:
 
 1. **why-positioning-matters**
-   - 4 questions (multiple choice, true/false, multi-select, drag-drop ranking)
+   - 5 questions (multiple choice, true/false, multi-select, drag-drop ranking, fill-in-blanks)
 
 2. **positioning-vs-messaging-vs-branding**
-   - 3 questions (drag-drop categorize, multiple choice, true/false)
+   - 4 questions (drag-drop categorize, multiple choice, true/false, fill-in-blanks)
 
 3. **positioning-frameworks-overview**
-   - 3 questions (multiple choice, multi-select, true/false)
+   - 4 questions (multiple choice, multi-select, true/false, fill-in-blanks)
 
 ### Question Structure
 
 Each quiz includes:
 - ✅ Published immediately (`publishedAt` set)
 - ✅ Linked to lesson (oneToOne relation)
-- ✅ Multiple question types
+- ✅ Multiple question types including fill-in-the-blanks
 - ✅ Proper component structure for dynamic zones
 - ✅ Explanations for answers
 - ✅ Icons (if media IDs configured)
+- ✅ Fill-in-blanks with dropdown options for guided answers
 
 ## Script Behavior
 
@@ -271,6 +270,42 @@ const QUIZ_DATA = [
   }],
 }
 ```
+
+### Fill-in-the-Blanks
+
+```javascript
+{
+  questionText: "Complete the sentence:",
+  questionType: "fillInBlanks",
+  order: 6,
+  points: 1,
+  instruction: "Select the correct words",
+  content: [{
+    __component: "question.fill-blanks-content",
+    sentenceTemplate: "Product {{blank1}} is about creating a {{blank2}} position in the {{blank3}} mind.",
+    blanks: [
+      createBlankField("blank1", [
+        { title: "pricing", isCorrect: false },
+        { title: "positioning", isCorrect: true },
+        { title: "marketing", isCorrect: false },
+      ]),
+      createBlankField("blank2", [
+        { title: "temporary", isCorrect: false },
+        { title: "distinct", isCorrect: true },
+        { title: "random", isCorrect: false },
+      ]),
+      createBlankField("blank3", [
+        { title: "competitor's", isCorrect: false },
+        { title: "customer's", isCorrect: true },
+        { title: "investor's", isCorrect: false },
+      ]),
+    ],
+  }],
+  explanation: "Optional explanation text for the correct answer",
+}
+```
+
+**Note:** The `sentenceTemplate` uses `{{blank1}}`, `{{blank2}}` placeholders that get replaced with dropdown selections in the UI.
 
 ## Troubleshooting
 

@@ -5,7 +5,7 @@ const fs = require("fs");
 const QUIZ_ICON_MEDIA_IDS = [
   // Add your media IDs here, e.g.: 1, 2, 3, 4, 5
   // If empty, no icons will be assigned
-  13, 14, 15, 12,
+  10,
 ];
 
 // CONFIGURATION: Set to true to delete all existing quizzes and questions before seeding
@@ -64,6 +64,17 @@ function createDraggableItem(
   return item;
 }
 
+// Helper to create blank field with dropdown options
+function createBlankField(blankId, options) {
+  return {
+    blankId,
+    dropdownOptions: options.map((opt) => ({
+      title: opt.title,
+      isCorrect: opt.isCorrect,
+    })),
+  };
+}
+
 // Quiz data for different lessons
 const QUIZ_DATA = [
   {
@@ -72,9 +83,9 @@ const QUIZ_DATA = [
       title: "Quiz: Why Positioning Matters",
       slug: "why-positioning-matters-quiz",
       description: "Test your understanding of positioning fundamentals",
-      totalQuestions: 4,
+      totalQuestions: 5,
       passingScore: 75,
-      timeLimit: 10,
+      timeLimit: 12,
       questions: [
         {
           questionText: "What is the primary goal of strategic positioning?",
@@ -222,6 +233,44 @@ const QUIZ_DATA = [
             },
           ],
         },
+        {
+          questionText: "Complete the sentence about strategic positioning:",
+          questionType: "fillInBlanks",
+          order: 5,
+          points: 1,
+          instruction: "Select the correct words to complete the sentence",
+          content: [
+            {
+              __component: "question.fill-blanks-content",
+              sentenceTemplate:
+                "Positioning is the process of creating a {{blank1}} place for your product in the {{blank2}} mind. It defines how you want your {{blank3}} to perceive your product relative to {{blank4}}.",
+              blanks: [
+                createBlankField("blank1", [
+                  { title: "temporary", isCorrect: false },
+                  { title: "distinct", isCorrect: true },
+                  { title: "random", isCorrect: false },
+                ]),
+                createBlankField("blank2", [
+                  { title: "competitor's", isCorrect: false },
+                  { title: "customer's", isCorrect: true },
+                  { title: "investor's", isCorrect: false },
+                ]),
+                createBlankField("blank3", [
+                  { title: "employees", isCorrect: false },
+                  { title: "shareholders", isCorrect: false },
+                  { title: "target audience", isCorrect: true },
+                ]),
+                createBlankField("blank4", [
+                  { title: "your pricing", isCorrect: false },
+                  { title: "competitors", isCorrect: true },
+                  { title: "your costs", isCorrect: false },
+                ]),
+              ],
+            },
+          ],
+          explanation:
+            "Strong positioning creates a unique and distinct place in customers' minds, helping them understand your value relative to alternatives in the market.",
+        },
       ],
     },
   },
@@ -232,9 +281,9 @@ const QUIZ_DATA = [
       slug: "positioning-messaging-branding-quiz",
       description:
         "Test your knowledge of the differences between positioning, messaging, and branding",
-      totalQuestions: 3,
+      totalQuestions: 4,
       passingScore: 70,
-      timeLimit: 8,
+      timeLimit: 10,
       questions: [
         {
           questionText:
@@ -361,6 +410,39 @@ const QUIZ_DATA = [
             },
           ],
         },
+        {
+          questionText: "Fill in the blanks to complete this key concept:",
+          questionType: "fillInBlanks",
+          order: 4,
+          points: 1,
+          instruction: "Select the correct terms",
+          content: [
+            {
+              __component: "question.fill-blanks-content",
+              sentenceTemplate:
+                "{{blank1}} defines where you compete, {{blank2}} defines how you communicate, and {{blank3}} defines how you look and feel.",
+              blanks: [
+                createBlankField("blank1", [
+                  { title: "Messaging", isCorrect: false },
+                  { title: "Positioning", isCorrect: true },
+                  { title: "Branding", isCorrect: false },
+                ]),
+                createBlankField("blank2", [
+                  { title: "positioning", isCorrect: false },
+                  { title: "messaging", isCorrect: true },
+                  { title: "branding", isCorrect: false },
+                ]),
+                createBlankField("blank3", [
+                  { title: "positioning", isCorrect: false },
+                  { title: "messaging", isCorrect: false },
+                  { title: "branding", isCorrect: true },
+                ]),
+              ],
+            },
+          ],
+          explanation:
+            "These three elements work together: positioning is strategic (where), messaging is tactical (how to communicate), and branding is expressive (visual identity).",
+        },
       ],
     },
   },
@@ -370,9 +452,9 @@ const QUIZ_DATA = [
       title: "Quiz: Positioning Frameworks",
       slug: "positioning-frameworks-quiz",
       description: "Test your understanding of popular positioning frameworks",
-      totalQuestions: 3,
+      totalQuestions: 4,
       passingScore: 70,
-      timeLimit: 8,
+      timeLimit: 10,
       questions: [
         {
           questionText:
@@ -469,6 +551,39 @@ const QUIZ_DATA = [
             },
           ],
         },
+        {
+          questionText: "Complete the sentence about positioning frameworks:",
+          questionType: "fillInBlanks",
+          order: 4,
+          points: 1,
+          instruction: "Choose the correct answers",
+          content: [
+            {
+              __component: "question.fill-blanks-content",
+              sentenceTemplate:
+                "A good positioning framework helps you identify your {{blank1}}, understand your {{blank2}}, and articulate your unique {{blank3}} in a way that resonates with customers.",
+              blanks: [
+                createBlankField("blank1", [
+                  { title: "competitors", isCorrect: false },
+                  { title: "target market", isCorrect: true },
+                  { title: "pricing strategy", isCorrect: false },
+                ]),
+                createBlankField("blank2", [
+                  { title: "budget limits", isCorrect: false },
+                  { title: "competitive landscape", isCorrect: true },
+                  { title: "office location", isCorrect: false },
+                ]),
+                createBlankField("blank3", [
+                  { title: "logo", isCorrect: false },
+                  { title: "team size", isCorrect: false },
+                  { title: "value proposition", isCorrect: true },
+                ]),
+              ],
+            },
+          ],
+          explanation:
+            "Frameworks guide you through identifying your target market, analyzing competition, and clearly defining what makes your offering valuable and different.",
+        },
       ],
     },
   },
@@ -476,11 +591,10 @@ const QUIZ_DATA = [
 
 // Main seed function
 async function seedQuizzes() {
-  const strapiUrl =
-    process.env.STRAPI_URL || "https://prized-cuddle-254dd791cc.strapiapp.com";
+  const strapiUrl = process.env.STRAPI_URL || "http://localhost:1337";
   const apiToken =
     process.env.STRAPI_API_TOKEN ||
-    "fcd1f547bc4ff8deda6c43a1a55038965d0fbc93439bb77719e95ee9628ac196b87abb1c04139a302d9e55fdfb8f283b6f8e4f7f645b56af06b38ff6d9f39dcfcc41ef23a163dcf4703eefeec7ab25bbe7d2fc6cf16913923c90bcaebf0c05ab4365c26fd1dad1a36227a7abd416f7887ce2a92988a1bdc7c0350e01b3337a76";
+    "b962ce9a6783e76c0df37f8d662781531c0d87f92094010cc5479415f35f6f0746722efe85a0a4b959a64d620f05265fe5500034274f0a98c2266ec277b56ba74139eda8c721e779a789baa083bb1c0a427e7474cb7deea810579bc29938c5325e11eb11da6b4e1547ad8a6634b86078e0d0a8977b30be0c95171da3bf8551b7";
 
   if (!apiToken) {
     console.error("❌ STRAPI_API_TOKEN environment variable is required");
@@ -809,15 +923,18 @@ async function seedQuizzes() {
           data: {
             quiz: quizDocumentId,
             // Preserve existing shortDescription or provide default
-            shortDescription: currentLesson.shortDescription || "This lesson covers important concepts.",
+            shortDescription:
+              currentLesson.shortDescription ||
+              "This lesson covers important concepts.",
             // Preserve existing media or provide default structure
-            media: currentLesson.media?.map(item => ({
-              ...item,
-              title: item.title || "Media Item",
-              shortDescription: item.shortDescription || "Media description",
-              transcript: item.transcript || "No transcript available"
-            })) || []
-          }
+            media:
+              currentLesson.media?.map((item) => ({
+                ...item,
+                title: item.title || "Media Item",
+                shortDescription: item.shortDescription || "Media description",
+                transcript: item.transcript || "No transcript available",
+              })) || [],
+          },
         };
 
         const lessonLinkResponse = await fetch(
